@@ -5,3 +5,9 @@ Chess App is being developed mainly to practice software development using the J
 This application is being developed with basis on exercises available in several chapters of the book  *Agile Java* by Jeff Langr.
 
 As the project evolves, I will add more information on its class structure, and functionalities.
+
+## Class structure
+
+### `Pawn`
+
+`Pawn` represents pawns. They can be created as black or white pawns.
