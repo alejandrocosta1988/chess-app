@@ -25,17 +25,16 @@ public class BoardTest {
 		
 		final String BLACK = "black";
 		Board board = new Board();
-		ArrayList<Pawn> pieces = board.getPieces();
 		Pawn whitePawn01 = new Pawn();
 		Pawn blackPawn01 = new Pawn(BLACK);
 		
 		board.addPawn(whitePawn01);
 		assertEquals(1, board.getNumberOfPieces());
-		assertTrue(pieces.contains(whitePawn01));
+		assertTrue(board.contains(whitePawn01));
 		
 		board.addPawn(blackPawn01);
 		assertEquals(2, board.getNumberOfPieces());
-		assertTrue(pieces.contains(blackPawn01));
+		assertTrue(board.contains(blackPawn01));
 		
 	}
 

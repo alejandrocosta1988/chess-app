@@ -1,7 +1,6 @@
 package chess.board;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import chess.pieces.Pawn;
 
@@ -17,8 +16,8 @@ public class Board {
 		pieces.add(whitePawn01);
 	}
 
-	public ArrayList<Pawn> getPieces() {
-		return pieces;
+	public boolean contains(Pawn whitePawn01) {
+		return pieces.contains(whitePawn01);
 	}
 
 }
