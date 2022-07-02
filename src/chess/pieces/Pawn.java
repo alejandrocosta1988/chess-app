@@ -1,5 +1,9 @@
 package chess.pieces;
 
+/**
+ * Represents a chess pawn.
+ * @author alejandro_costa
+ */
 public class Pawn {
 
 	private final String WHITE = "white";
