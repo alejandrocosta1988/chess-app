@@ -3,8 +3,6 @@ package chess.board;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 import chess.pieces.Pawn;
@@ -23,10 +21,9 @@ public class BoardTest {
 	@Test
 	public void testAddPawnToBoard() {
 		
-		final String BLACK = "black";
 		Board board = new Board();
 		Pawn whitePawn01 = new Pawn();
-		Pawn blackPawn01 = new Pawn(BLACK);
+		Pawn blackPawn01 = new Pawn(Pawn.BLACK);
 		
 		board.addPawn(whitePawn01);
 		assertEquals(1, board.getNumberOfPieces());

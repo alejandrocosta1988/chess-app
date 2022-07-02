@@ -6,8 +6,8 @@ package chess.pieces;
  */
 public class Pawn {
 
-	private final String WHITE = "white";
-	private final String BLACK = "black";
+	public static final String WHITE = "white";
+	public static final String BLACK = "black";
 
 	private String color;
 	
