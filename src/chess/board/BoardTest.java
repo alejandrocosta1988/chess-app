@@ -35,5 +35,5 @@ public class BoardTest extends TestCase {
 		assertTrue(board.contains(blackPawn01));
 		
 	}
-
+	
 }
