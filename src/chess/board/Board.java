@@ -16,16 +16,16 @@ public class Board {
 		return pieces.size();
 	}
 
-	public void addPawn(Pawn whitePawn01) {
-		pieces.add(whitePawn01);
+	public void addPawn(Pawn pawn) {
+		pieces.add(pawn);
 	}
 
 	/**
 	 * Checks if the piece is on the board.
-	 * @param whitePawn01 piece to be checked.
+	 * @param pawn piece to be checked.
 	 */
-	public boolean contains(Pawn whitePawn01) {
-		return pieces.contains(whitePawn01);
+	public boolean contains(Pawn pawn) {
+		return pieces.contains(pawn);
 	}
 
 }
