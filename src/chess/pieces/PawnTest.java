@@ -1,4 +1,4 @@
-package pieces;
+package chess.pieces;
 
 public class PawnTest extends junit.framework.TestCase {
 
