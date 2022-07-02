@@ -1,18 +1,20 @@
 package chess.board;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 import chess.pieces.Pawn;
+import junit.framework.TestCase;
 
-public class BoardTest {
+public class BoardTest extends TestCase {
 
+	private Board board;
+	
+	public void setUp() {
+		board = new Board();
+	}
+	
 	@Test
 	public void testCreate() {
-		
-		Board board = new Board();
 		
 		assertEquals(0, board.getNumberOfPieces());
 
@@ -21,7 +23,6 @@ public class BoardTest {
 	@Test
 	public void testAddPawnToBoard() {
 		
-		Board board = new Board();
 		Pawn whitePawn01 = new Pawn();
 		Pawn blackPawn01 = new Pawn(Pawn.BLACK);
 		
