@@ -16,24 +16,19 @@ public class BoardTest extends TestCase {
 	@Test
 	public void testCreate() {
 		
-		assertEquals(0, board.getNumberOfPieces());
+		assertEquals(16, board.getNumberOfPieces());
+		assertEquals(" p  p  p  p  p  p  p  p ", board.printRank(board.rank2));
+		assertEquals(" P  P  P  P  P  P  P  P ", board.printRank(board.rank7));
+		assertEquals(
+				" .  .  .  .  .  .  .  . " + Board.NEWLINE +
+				" P  P  P  P  P  P  P  P " + Board.NEWLINE +
+				" .  .  .  .  .  .  .  . " + Board.NEWLINE +
+				" .  .  .  .  .  .  .  . " + Board.NEWLINE +
+				" .  .  .  .  .  .  .  . " + Board.NEWLINE +
+				" .  .  .  .  .  .  .  . " + Board.NEWLINE +
+				" p  p  p  p  p  p  p  p " + Board.NEWLINE +
+				" .  .  .  .  .  .  .  . ", board.printBoard());
 
-	}
-	
-	@Test
-	public void testAddPawnToBoard() {
-		
-		Pawn whitePawn01 = new Pawn();
-		Pawn blackPawn01 = new Pawn(Pawn.BLACK);
-		
-		board.addPawn(whitePawn01);
-		assertEquals(1, board.getNumberOfPieces());
-		assertTrue(board.contains(whitePawn01));
-		
-		board.addPawn(blackPawn01);
-		assertEquals(2, board.getNumberOfPieces());
-		assertTrue(board.contains(blackPawn01));
-		
 	}
 	
 }
