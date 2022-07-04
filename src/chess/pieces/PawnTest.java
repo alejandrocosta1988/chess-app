@@ -13,4 +13,14 @@ public class PawnTest extends junit.framework.TestCase {
 		assertEquals(Pawn.WHITE, whitePawn02.getColor());
 		
 	}
+	
+	public void testPrintableRepresentation() {
+		
+		Pawn blackPawn = new Pawn(Pawn.BLACK);
+		Pawn whitePawn = new Pawn();
+		
+		assertEquals(" P ", blackPawn.toString());
+		assertEquals(" p ", whitePawn.toString());
+		
+	}
 }
