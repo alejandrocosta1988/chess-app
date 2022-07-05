@@ -17,19 +17,19 @@ public class BoardTest extends TestCase {
 	@Test
 	public void testCreate() {
 		
-		assertEquals(16, board.getNumberOfPieces());
+		assertEquals(32, board.getNumberOfPieces());
 		assertEquals(" p  p  p  p  p  p  p  p ", board.printRank(board.rank2));
 		assertEquals(" P  P  P  P  P  P  P  P ", board.printRank(board.rank7));
 		assertEquals(
-				" .  .  .  .  .  .  .  . " + StringUtil.addNewLine() +
+				" R  N  B  Q  K  B  N  R " + StringUtil.addNewLine() +
 				" P  P  P  P  P  P  P  P " + StringUtil.addNewLine() +
 				" .  .  .  .  .  .  .  . " + StringUtil.addNewLine() +
 				" .  .  .  .  .  .  .  . " + StringUtil.addNewLine() +
 				" .  .  .  .  .  .  .  . " + StringUtil.addNewLine() +
 				" .  .  .  .  .  .  .  . " + StringUtil.addNewLine() +
 				" p  p  p  p  p  p  p  p " + StringUtil.addNewLine() +
-				" .  .  .  .  .  .  .  . ", board.printBoard());
-
+				" r  n  b  q  k  b  n  r ", board.printBoard());
+		
 	}
 	
 }
