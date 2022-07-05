@@ -9,6 +9,11 @@ public class Piece {
 	public static final String WHITE = "white";
 	public static final String BLACK = "black";
 	public static final String PAWN	= "pawn";
+	public static final String KNIGHT = "knight";
+	public static final String ROOK = "rook";
+	public static final String BISHOP = "bishop";
+	public static final String 	QUEEN = "queen";
+	public static final String KING = "king";
 	
 	private char printableRepresentation;
 
@@ -22,11 +27,24 @@ public class Piece {
 	}
 	
 	private void setPrintableRepresentation(String pieceName) {
+		
+		int stringIndex = 0;
+		
+		if (isKnight(pieceName)) {
+			++stringIndex;
+		}
+		
 		if (this.color.equals(BLACK)) {
-			this.printableRepresentation = pieceName.toUpperCase().charAt(0);
+			this.printableRepresentation = pieceName.toUpperCase().charAt(stringIndex);
 			return;
-		} 
-		this.printableRepresentation = pieceName.toLowerCase().charAt(0);
+		}
+		
+		this.printableRepresentation = pieceName.toLowerCase().charAt(stringIndex);
+		
+	}
+	
+	private boolean isKnight(String pieceName) {
+		return pieceName.equals(KNIGHT);
 	}
 	
 	public static Piece createWhitePawn() {
@@ -37,9 +55,44 @@ public class Piece {
 		return new Piece(BLACK, PAWN);
 	}
 	
-
-	public String getColor() {
-		return color;
+	public static Piece createWhiteKnight() {
+		return new Piece(WHITE, KNIGHT);
+	}
+	
+	public static Piece createBlackKnight() {
+		return new Piece(BLACK, KNIGHT);
+	}
+	
+	public static Piece createWhiteRook() {
+		return new Piece(WHITE, ROOK);
+	}
+	
+	public static Piece createBlackRook() {
+		return new Piece(BLACK, ROOK);
+	}
+	
+	public static Piece createWhiteBishop() {
+		return new Piece(WHITE, BISHOP);
+	}
+	
+	public static Piece createBlackBishop() {
+		return new Piece(BLACK, BISHOP);
+	}
+	
+	public static Piece createWhiteQueen() {
+		return new Piece(WHITE, QUEEN);
+	}
+	
+	public static Piece createBlackQueen() {
+		return new Piece(BLACK, QUEEN);
+	}
+	
+	public static Piece createWhiteKing() {
+		return new Piece(WHITE, KING);
+	}
+	
+	public static Piece createBlackKing() {
+		return new Piece(BLACK, KING);
 	}
 	
 	public String toString() {
