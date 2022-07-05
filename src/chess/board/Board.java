@@ -3,7 +3,7 @@ package chess.board;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import chess.pieces.Pawn;
+import chess.pieces.Piece;
 import util.StringUtil;
 
 /**
@@ -12,14 +12,14 @@ import util.StringUtil;
  */
 public class Board {
 	
-	private ArrayList<Pawn> pieces = new ArrayList<>();
+	private ArrayList<Piece> pieces = new ArrayList<>();
 	protected ArrayList<String> rank1 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
-	protected ArrayList<Pawn> rank2 = new ArrayList<>(8);
+	protected ArrayList<Piece> rank2 = new ArrayList<>(8);
 	protected ArrayList<String> rank3 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
 	protected ArrayList<String> rank4 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
 	protected ArrayList<String> rank5 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
 	protected ArrayList<String> rank6 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
-	protected ArrayList<Pawn> rank7 = new ArrayList<>(8);
+	protected ArrayList<Piece> rank7 = new ArrayList<>(8);
 	protected ArrayList<String> rank8 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
 	
 	public Board() {
@@ -27,22 +27,22 @@ public class Board {
 	}
 
 	public void initialize() {
-		rank2.add(new Pawn(Pawn.WHITE));
-		rank2.add(new Pawn(Pawn.WHITE));
-		rank2.add(new Pawn(Pawn.WHITE));
-		rank2.add(new Pawn(Pawn.WHITE));
-		rank2.add(new Pawn(Pawn.WHITE));
-		rank2.add(new Pawn(Pawn.WHITE));
-		rank2.add(new Pawn(Pawn.WHITE));
-		rank2.add(new Pawn(Pawn.WHITE));
-		rank7.add(new Pawn(Pawn.BLACK));
-		rank7.add(new Pawn(Pawn.BLACK));
-		rank7.add(new Pawn(Pawn.BLACK));
-		rank7.add(new Pawn(Pawn.BLACK));
-		rank7.add(new Pawn(Pawn.BLACK));
-		rank7.add(new Pawn(Pawn.BLACK));
-		rank7.add(new Pawn(Pawn.BLACK));
-		rank7.add(new Pawn(Pawn.BLACK));
+		rank2.add(new Piece(Piece.WHITE));
+		rank2.add(new Piece(Piece.WHITE));
+		rank2.add(new Piece(Piece.WHITE));
+		rank2.add(new Piece(Piece.WHITE));
+		rank2.add(new Piece(Piece.WHITE));
+		rank2.add(new Piece(Piece.WHITE));
+		rank2.add(new Piece(Piece.WHITE));
+		rank2.add(new Piece(Piece.WHITE));
+		rank7.add(new Piece(Piece.BLACK));
+		rank7.add(new Piece(Piece.BLACK));
+		rank7.add(new Piece(Piece.BLACK));
+		rank7.add(new Piece(Piece.BLACK));
+		rank7.add(new Piece(Piece.BLACK));
+		rank7.add(new Piece(Piece.BLACK));
+		rank7.add(new Piece(Piece.BLACK));
+		rank7.add(new Piece(Piece.BLACK));
 	}
 	
 	public Object getNumberOfPieces() {
@@ -51,7 +51,7 @@ public class Board {
 		return pieces.size();
 	}
 	
-	public void addPawn(Pawn pawn) {
+	public void addPawn(Piece pawn) {
 		pieces.add(pawn);
 	}
 
@@ -59,13 +59,13 @@ public class Board {
 	 * Checks if the piece is on the board.
 	 * @param pawn piece to be checked.
 	 */
-	public boolean contains(Pawn pawn) {
+	public boolean contains(Piece pawn) {
 		return pieces.contains(pawn);
 	}
 
-	public String printRank(ArrayList<Pawn> rank) {
+	public String printRank(ArrayList<Piece> rank) {
 		StringBuilder buffer = new StringBuilder();
-		for (Pawn pawn : rank) {
+		for (Piece pawn : rank) {
 			buffer.append(pawn.toString());
 		}
 		return buffer.toString();

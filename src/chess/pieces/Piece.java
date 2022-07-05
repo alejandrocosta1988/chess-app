@@ -4,7 +4,7 @@ package chess.pieces;
  * Represents a chess pawn.
  * @author alejandro_costa
  */
-public class Pawn {
+public class Piece {
 
 	public static final String WHITE = "white";
 	public static final String BLACK = "black";
@@ -13,12 +13,12 @@ public class Pawn {
 
 	private String color;
 	
-	public Pawn() {
+	public Piece() {
 		this.color = WHITE;
 		setPrintableRepresentation();
 	}
 	
-	public Pawn(String color) {
+	public Piece(String color) {
 		this.color = color;
 		setPrintableRepresentation();
 	}

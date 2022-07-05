@@ -2,7 +2,7 @@ package chess.board;
 
 import org.junit.Test;
 
-import chess.pieces.Pawn;
+import chess.pieces.Piece;
 import junit.framework.TestCase;
 import util.StringUtil;
 
