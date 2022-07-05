@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import chess.pieces.Pawn;
+import util.StringUtil;
 
 /**
  * Represents a chess board.
  * @author Alejandro Costa
  */
 public class Board {
-	
-	static final String NEWLINE = System.getProperty("line.separator");
 	
 	private ArrayList<Pawn> pieces = new ArrayList<>();
 	protected ArrayList<String> rank1 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
@@ -83,19 +82,19 @@ public class Board {
 	public String printBoard() {
 		StringBuilder buffer = new StringBuilder();
 		buffer.append(printEmptyRank(rank8));
-		buffer.append(Board.NEWLINE);
+		buffer.append(StringUtil.addNewLine());
 		buffer.append(printRank(rank7));
-		buffer.append(Board.NEWLINE);
+		buffer.append(StringUtil.addNewLine());
 		buffer.append(printEmptyRank(rank6));
-		buffer.append(Board.NEWLINE);
+		buffer.append(StringUtil.addNewLine());
 		buffer.append(printEmptyRank(rank5));
-		buffer.append(Board.NEWLINE);
+		buffer.append(StringUtil.addNewLine());
 		buffer.append(printEmptyRank(rank4));
-		buffer.append(Board.NEWLINE);
+		buffer.append(StringUtil.addNewLine());
 		buffer.append(printEmptyRank(rank3));
-		buffer.append(Board.NEWLINE);
+		buffer.append(StringUtil.addNewLine());
 		buffer.append(printRank(rank2));
-		buffer.append(Board.NEWLINE);
+		buffer.append(StringUtil.addNewLine());
 		buffer.append(printEmptyRank(rank1));
 		return buffer.toString();
 	}
