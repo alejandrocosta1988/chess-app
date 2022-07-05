@@ -1,7 +1,7 @@
 package chess.pieces;
 
 /**
- * Represents a chess pawn.
+ * Represents a chess piece.
  * @author alejandro_costa
  */
 public class Piece {
@@ -12,15 +12,20 @@ public class Piece {
 	private char printableRepresentation;
 
 	private String color;
+	private String name;
 	
-	public Piece() {
-		this.color = WHITE;
+	private Piece(String color, String name) {
+		this.color = color;
+		this.name = name;
 		setPrintableRepresentation();
 	}
 	
-	public Piece(String color) {
-		this.color = color;
-		setPrintableRepresentation();
+	public static Piece createWhitePawn() {
+		return new Piece(WHITE, "Pawn");
+	}
+	
+	public static Piece createBlackPawn() {
+		return new Piece(BLACK, "Pawn");
 	}
 	
 	private void setPrintableRepresentation() {

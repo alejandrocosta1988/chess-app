@@ -4,9 +4,9 @@ public class PieceTest extends junit.framework.TestCase {
 
 	public void testCreate() {
 		
-		Piece whitePawn01 = new Piece(Piece.WHITE);
-		Piece blackPawn01 = new Piece(Piece.BLACK);
-		Piece whitePawn02 = new Piece();
+		Piece whitePawn01 = Piece.createWhitePawn();
+		Piece blackPawn01 = Piece.createBlackPawn();
+		Piece whitePawn02 = Piece.createWhitePawn();
 		
 		assertEquals(Piece.WHITE, whitePawn01.getColor());
 		assertEquals(Piece.BLACK, blackPawn01.getColor());
@@ -16,8 +16,8 @@ public class PieceTest extends junit.framework.TestCase {
 	
 	public void testPrintableRepresentation() {
 		
-		Piece blackPawn = new Piece(Piece.BLACK);
-		Piece whitePawn = new Piece();
+		Piece blackPawn = Piece.createBlackPawn();
+		Piece whitePawn = Piece.createWhitePawn();
 		
 		assertEquals(" P ", blackPawn.toString());
 		assertEquals(" p ", whitePawn.toString());

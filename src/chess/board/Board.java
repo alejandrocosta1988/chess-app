@@ -27,22 +27,22 @@ public class Board {
 	}
 
 	public void initialize() {
-		rank2.add(new Piece(Piece.WHITE));
-		rank2.add(new Piece(Piece.WHITE));
-		rank2.add(new Piece(Piece.WHITE));
-		rank2.add(new Piece(Piece.WHITE));
-		rank2.add(new Piece(Piece.WHITE));
-		rank2.add(new Piece(Piece.WHITE));
-		rank2.add(new Piece(Piece.WHITE));
-		rank2.add(new Piece(Piece.WHITE));
-		rank7.add(new Piece(Piece.BLACK));
-		rank7.add(new Piece(Piece.BLACK));
-		rank7.add(new Piece(Piece.BLACK));
-		rank7.add(new Piece(Piece.BLACK));
-		rank7.add(new Piece(Piece.BLACK));
-		rank7.add(new Piece(Piece.BLACK));
-		rank7.add(new Piece(Piece.BLACK));
-		rank7.add(new Piece(Piece.BLACK));
+		rank2.add(Piece.createWhitePawn());
+		rank2.add(Piece.createWhitePawn());
+		rank2.add(Piece.createWhitePawn());
+		rank2.add(Piece.createWhitePawn());
+		rank2.add(Piece.createWhitePawn());
+		rank2.add(Piece.createWhitePawn());
+		rank2.add(Piece.createWhitePawn());
+		rank2.add(Piece.createWhitePawn());
+		rank7.add(Piece.createBlackPawn());
+		rank7.add(Piece.createBlackPawn());
+		rank7.add(Piece.createBlackPawn());
+		rank7.add(Piece.createBlackPawn());
+		rank7.add(Piece.createBlackPawn());
+		rank7.add(Piece.createBlackPawn());
+		rank7.add(Piece.createBlackPawn());
+		rank7.add(Piece.createBlackPawn());
 	}
 	
 	public Object getNumberOfPieces() {
