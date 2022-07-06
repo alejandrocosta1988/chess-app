@@ -40,23 +40,41 @@ public class Piece {
 	
 	private void setPrintableRepresentation(String pieceName) {
 		
-		int stringIndex = 0;
+		int stringIndex = defineIndex(pieceName);
+		definePrintableRepresentation(stringIndex);
 		
+	}
+	
+	private int defineIndex(String pieceName) {
+		int stringIndex = 0;
 		if (isKnight(pieceName)) {
 			++stringIndex;
 		}
-		
-		if (this.color.equals(BLACK)) {
-			this.printableRepresentation = pieceName.toUpperCase().charAt(stringIndex);
-			return;
-		}
-		
-		this.printableRepresentation = pieceName.toLowerCase().charAt(stringIndex);
-		
+		return stringIndex;
 	}
 	
 	private boolean isKnight(String pieceName) {
 		return pieceName.equals(KNIGHT);
+	}
+	
+	private void definePrintableRepresentation(int stringIndex) {
+		if (this.isBlack()) {
+			representBlackPiece(stringIndex);
+			return;
+		}
+		representWhitePiece(stringIndex);
+	}
+	
+	public boolean isBlack() {
+		return color.equals(BLACK);
+	}
+	
+	private void representBlackPiece(int stringIndex) {
+		printableRepresentation = name.toUpperCase().charAt(stringIndex);
+	}
+	
+	private void representWhitePiece(int stringIndex) {
+		printableRepresentation = name.toLowerCase().charAt(stringIndex);
 	}
 	
 	static public void resetPieceCounter() {
@@ -126,10 +144,6 @@ public class Piece {
 
 	public boolean isWhite() {
 		return color.equals(WHITE);
-	}
-
-	public boolean isBlack() {
-		return color.equals(BLACK);
 	}
 
 }
