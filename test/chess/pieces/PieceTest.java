@@ -2,20 +2,37 @@ package chess.pieces;
 
 public class PieceTest extends junit.framework.TestCase {
 	
-	public void testEachPieceHasItsOwnPrintableRepresentation() {
+	private Piece blackPawn;
+	private Piece whitePawn;
+	private Piece blackKnight;
+	private Piece whiteKnight;
+	private Piece blackRook;
+	private Piece whiteRook;
+	private Piece blackBishop;
+	private Piece whiteBishop;
+	private Piece blackQueen;
+	private Piece whiteQueen;
+	private Piece blackKing;
+	private Piece whiteKing;
+	
+	public void setUp() {
 		
-		Piece blackPawn = Piece.createBlackPawn();
-		Piece whitePawn = Piece.createWhitePawn();
-		Piece blackKnight = Piece.createBlackKnight();
-		Piece whiteKnight = Piece.createWhiteKnight();
-		Piece blackRook = Piece.createBlackRook();
-		Piece whiteRook = Piece.createWhiteRook();
-		Piece blackBishop = Piece.createBlackBishop();
-		Piece whiteBishop = Piece.createWhiteBishop();
-		Piece blackQueen = Piece.createBlackQueen();
-		Piece whiteQueen = Piece.createWhiteQueen();
-		Piece blackKing = Piece.createBlackKing();
-		Piece whiteKing = Piece.createWhiteKing();
+		blackPawn = Piece.createBlackPawn();
+		whitePawn = Piece.createWhitePawn();
+		blackKnight = Piece.createBlackKnight();
+		whiteKnight = Piece.createWhiteKnight();
+		blackRook = Piece.createBlackRook();
+		whiteRook = Piece.createWhiteRook();
+		blackBishop = Piece.createBlackBishop();
+		whiteBishop = Piece.createWhiteBishop();
+		blackQueen = Piece.createBlackQueen();
+		whiteQueen = Piece.createWhiteQueen();
+		blackKing = Piece.createBlackKing();
+		whiteKing = Piece.createWhiteKing();
+		
+	}
+	
+	public void testEachPieceHasItsOwnPrintableRepresentation() {
 		
 		assertEquals(" P ", blackPawn.toString());
 		assertEquals(" p ", whitePawn.toString());
@@ -33,9 +50,6 @@ public class PieceTest extends junit.framework.TestCase {
 	}
 	
 	public void testPiecesCanBeBlackOrWhite() {
-		
-		Piece whiteKing = Piece.createWhiteKing();
-		Piece blackQueen = Piece.createBlackQueen();
 		
 		assertTrue(whiteKing.isWhite());
 		assertFalse(blackQueen.isWhite());
