@@ -24,14 +24,14 @@ public class Piece {
 	private String name;
 	
 	private Piece(String color, String name) {
-		incrementPieceCount(color);
 		this.color = color;
+		incrementPieceCount();
 		this.name = name;
 		setPrintableRepresentation(name);
 	}
 	
-	private void incrementPieceCount(String color) {
-		if (color.equals(WHITE)) {
+	private void incrementPieceCount() {
+		if (this.isWhite()) {
 			++Piece.whitePiecesCounter;
 			return;
 		}
