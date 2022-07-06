@@ -5,6 +5,9 @@ package chess.pieces;
  * @author alejandro_costa
  */
 public class Piece {
+	
+	static int whitePiecesCounter = 0;
+	static int blackPiecesCounter = 0;
 
 	public static final String WHITE = "white";
 	public static final String BLACK = "black";
@@ -21,9 +24,18 @@ public class Piece {
 	private String name;
 	
 	private Piece(String color, String name) {
+		incrementPieceCount(color);
 		this.color = color;
 		this.name = name;
 		setPrintableRepresentation(name);
+	}
+	
+	private void incrementPieceCount(String color) {
+		if (color.equals(WHITE)) {
+			++Piece.whitePiecesCounter;
+			return;
+		}
+		++Piece.blackPiecesCounter;
 	}
 	
 	private void setPrintableRepresentation(String pieceName) {
@@ -45,6 +57,19 @@ public class Piece {
 	
 	private boolean isKnight(String pieceName) {
 		return pieceName.equals(KNIGHT);
+	}
+	
+	static public void resetPieceCounter() {
+		Piece.whitePiecesCounter = 0;
+		Piece.blackPiecesCounter = 0;
+	}
+	
+	static public int countWhitePieces() {
+		return Piece.whitePiecesCounter;
+	}
+	
+	static public int countBlackPieces() {
+		return Piece.blackPiecesCounter;
 	}
 	
 	public static Piece createWhitePawn() {

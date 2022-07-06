@@ -17,6 +17,7 @@ public class BoardTest extends TestCase {
 	private Board board;
 	
 	public void setUp() {
+		Piece.resetPieceCounter();
 		board = new Board();
 	}
 	
@@ -35,6 +36,14 @@ public class BoardTest extends TestCase {
 				EMPTY_RANK + StringUtil.addNewLine() +
 				RANK_2 + StringUtil.addNewLine() +
 				RANK_1, board.printBoard());
+		
+	}
+	
+	@Test
+	public void testABoardCreates16BlackAnd16WhitePieces() {
+		
+		assertEquals(16, Piece.countWhitePieces());
+		assertEquals(16, Piece.countBlackPieces());
 		
 	}
 	

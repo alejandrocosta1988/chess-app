@@ -14,12 +14,12 @@ public class Board {
 	
 	private ArrayList<Piece> pieces = new ArrayList<>();
 	protected ArrayList<Piece> rank1 = new ArrayList<>();
-	protected ArrayList<Piece> rank2 = new ArrayList<>(8);
+	protected ArrayList<Piece> rank2 = new ArrayList<>();
 	protected ArrayList<String> rank3 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
 	protected ArrayList<String> rank4 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
 	protected ArrayList<String> rank5 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
 	protected ArrayList<String> rank6 = new ArrayList<>(Arrays.asList(" . "," . "," . "," . "," . "," . "," . "," . "));
-	protected ArrayList<Piece> rank7 = new ArrayList<>(8);
+	protected ArrayList<Piece> rank7 = new ArrayList<>();
 	protected ArrayList<Piece> rank8 = new ArrayList<>();
 	
 	public Board() {
