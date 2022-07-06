@@ -124,4 +124,12 @@ public class Piece {
 		return " " + this.printableRepresentation + " ";
 	}
 
+	public boolean isWhite() {
+		return color.equals(WHITE);
+	}
+
+	public boolean isBlack() {
+		return color.equals(BLACK);
+	}
+
 }

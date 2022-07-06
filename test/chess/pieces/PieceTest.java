@@ -31,4 +31,17 @@ public class PieceTest extends junit.framework.TestCase {
 		assertEquals(" k ", whiteKing.toString());
 		
 	}
+	
+	public void testPiecesCanBeBlackOrWhite() {
+		
+		Piece whiteKing = Piece.createWhiteKing();
+		Piece blackQueen = Piece.createBlackQueen();
+		
+		assertTrue(whiteKing.isWhite());
+		assertFalse(blackQueen.isWhite());
+		
+		assertFalse(whiteKing.isBlack());
+		assertTrue(blackQueen.isBlack());
+		
+	}
 }
