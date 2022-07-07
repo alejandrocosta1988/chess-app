@@ -16,7 +16,6 @@ public class PieceTest extends junit.framework.TestCase {
 	private Piece whiteKing;
 	
 	public void setUp() {
-		
 		blackPawn = Piece.createBlackPawn();
 		whitePawn = Piece.createWhitePawn();
 		blackKnight = Piece.createBlackKnight();
@@ -29,33 +28,36 @@ public class PieceTest extends junit.framework.TestCase {
 		whiteQueen = Piece.createWhiteQueen();
 		blackKing = Piece.createBlackKing();
 		whiteKing = Piece.createWhiteKing();
-		
 	}
 	
 	public void testEachPieceHasItsOwnPrintableRepresentation() {
-		
-		assertEquals(" P ", blackPawn.toString());
-		assertEquals(" p ", whitePawn.toString());
-		assertEquals(" N ", blackKnight.toString());
-		assertEquals(" n ", whiteKnight.toString());
-		assertEquals(" R ", blackRook.toString());
-		assertEquals(" r ", whiteRook.toString());
-		assertEquals(" B ", blackBishop.toString());
-		assertEquals(" b ", whiteBishop.toString());
-		assertEquals(" Q ", blackQueen.toString());
-		assertEquals(" q ", whiteQueen.toString());
-		assertEquals(" K ", blackKing.toString());
-		assertEquals(" k ", whiteKing.toString());
-		
+		assertEquals(" P ", blackPawn.getRepresentation());
+		assertEquals(" p ", whitePawn.getRepresentation());
+		assertEquals(" N ", blackKnight.getRepresentation());
+		assertEquals(" n ", whiteKnight.getRepresentation());
+		assertEquals(" R ", blackRook.getRepresentation());
+		assertEquals(" r ", whiteRook.getRepresentation());
+		assertEquals(" B ", blackBishop.getRepresentation());
+		assertEquals(" b ", whiteBishop.getRepresentation());
+		assertEquals(" Q ", blackQueen.getRepresentation());
+		assertEquals(" q ", whiteQueen.getRepresentation());
+		assertEquals(" K ", blackKing.getRepresentation());
+		assertEquals(" k ", whiteKing.getRepresentation());
 	}
 	
 	public void testPiecesCanBeBlackOrWhite() {
-		
 		assertTrue(whiteKing.isWhite());
 		assertFalse(blackQueen.isWhite());
-		
 		assertFalse(whiteKing.isBlack());
 		assertTrue(blackQueen.isBlack());
-		
+	}
+	
+	public void testPiecesType() {
+		assertEquals(Piece.Type.PAWN, blackPawn.getType());
+		assertEquals(Piece.Type.ROOK, blackRook.getType());
+		assertEquals(Piece.Type.KNIGHT, blackKnight.getType());
+		assertEquals(Piece.Type.BISHOP, blackBishop.getType());
+		assertEquals(Piece.Type.QUEEN, blackQueen.getType());
+		assertEquals(Piece.Type.KING, blackKing.getType());
 	}
 }

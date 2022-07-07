@@ -87,7 +87,7 @@ public class Board {
 	public String printRank(ArrayList<Piece> rank) {
 		StringBuilder buffer = new StringBuilder();
 		for (Piece piece : rank) {
-			buffer.append(piece.toString());
+			buffer.append(piece.getRepresentation());
 		}
 		return buffer.toString();
 	}

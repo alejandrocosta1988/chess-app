@@ -130,12 +130,16 @@ public class Piece {
 		return new Piece(Color.BLACK, Type.KING);
 	}
 	
-	public String toString() {
-		return " " + this.printableRepresentation + " ";
-	}
-
 	public boolean isWhite() {
 		return color.equals(Color.WHITE);
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public String getRepresentation() {
+		return " " + printableRepresentation + " ";
 	}
 
 }
