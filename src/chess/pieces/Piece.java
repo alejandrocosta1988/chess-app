@@ -10,51 +10,43 @@ public class Piece {
 	static int blackPiecesCounter = 0;
 
 	enum Color { WHITE, BLACK };
-	
-	public static final String PAWN	= "pawn";
-	public static final String KNIGHT = "knight";
-	public static final String ROOK = "rook";
-	public static final String BISHOP = "bishop";
-	public static final String 	QUEEN = "queen";
-	public static final String KING = "king";
+	enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING };
 	
 	private char printableRepresentation;
 
 	private Color color;
-	private String name;
+	private Type type;
 	
-	private Piece(Color color, String name) {
+	private Piece(Color color, Type type) {
 		this.color = color;
 		incrementPieceCount();
-		this.name = name;
-		setPrintableRepresentation(name);
+		this.type = type;
+		setPrintableRepresentation();
 	}
 	
 	private void incrementPieceCount() {
-		if (this.isWhite()) {
+		if (isWhite()) {
 			++Piece.whitePiecesCounter;
 			return;
 		}
 		++Piece.blackPiecesCounter;
 	}
 	
-	private void setPrintableRepresentation(String pieceName) {
-		
-		int stringIndex = defineIndex(pieceName);
+	private void setPrintableRepresentation() {
+		int stringIndex = defineIndex();
 		definePrintableRepresentation(stringIndex);
-		
 	}
 	
-	private int defineIndex(String pieceName) {
+	private int defineIndex() {
 		int stringIndex = 0;
-		if (isKnight(pieceName)) {
+		if (isKnight()) {
 			++stringIndex;
 		}
 		return stringIndex;
 	}
 	
-	private boolean isKnight(String pieceName) {
-		return pieceName.equals(KNIGHT);
+	private boolean isKnight() {
+		return type == Type.KNIGHT;
 	}
 	
 	private void definePrintableRepresentation(int stringIndex) {
@@ -70,11 +62,11 @@ public class Piece {
 	}
 	
 	private void representBlackPiece(int stringIndex) {
-		printableRepresentation = name.toUpperCase().charAt(stringIndex);
+		printableRepresentation = type.toString().toUpperCase().charAt(stringIndex);
 	}
 	
 	private void representWhitePiece(int stringIndex) {
-		printableRepresentation = name.toLowerCase().charAt(stringIndex);
+		printableRepresentation = type.toString().toLowerCase().charAt(stringIndex);
 	}
 	
 	static public void resetPieceCounter() {
@@ -91,51 +83,51 @@ public class Piece {
 	}
 	
 	public static Piece createWhitePawn() {
-		return new Piece(Color.WHITE, PAWN);
+		return new Piece(Color.WHITE, Type.PAWN);
 	}
 	
 	public static Piece createBlackPawn() {
-		return new Piece(Color.BLACK, PAWN);
+		return new Piece(Color.BLACK, Type.PAWN);
 	}
 	
 	public static Piece createWhiteKnight() {
-		return new Piece(Color.WHITE, KNIGHT);
+		return new Piece(Color.WHITE, Type.KNIGHT);
 	}
 	
 	public static Piece createBlackKnight() {
-		return new Piece(Color.BLACK, KNIGHT);
+		return new Piece(Color.BLACK, Type.KNIGHT);
 	}
 	
 	public static Piece createWhiteRook() {
-		return new Piece(Color.WHITE, ROOK);
+		return new Piece(Color.WHITE, Type.ROOK);
 	}
 	
 	public static Piece createBlackRook() {
-		return new Piece(Color.BLACK, ROOK);
+		return new Piece(Color.BLACK, Type.ROOK);
 	}
 	
 	public static Piece createWhiteBishop() {
-		return new Piece(Color.WHITE, BISHOP);
+		return new Piece(Color.WHITE, Type.BISHOP);
 	}
 	
 	public static Piece createBlackBishop() {
-		return new Piece(Color.BLACK, BISHOP);
+		return new Piece(Color.BLACK, Type.BISHOP);
 	}
 	
 	public static Piece createWhiteQueen() {
-		return new Piece(Color.WHITE, QUEEN);
+		return new Piece(Color.WHITE, Type.QUEEN);
 	}
 	
 	public static Piece createBlackQueen() {
-		return new Piece(Color.BLACK, QUEEN);
+		return new Piece(Color.BLACK, Type.QUEEN);
 	}
 	
 	public static Piece createWhiteKing() {
-		return new Piece(Color.WHITE, KING);
+		return new Piece(Color.WHITE, Type.KING);
 	}
 	
 	public static Piece createBlackKing() {
-		return new Piece(Color.BLACK, KING);
+		return new Piece(Color.BLACK, Type.KING);
 	}
 	
 	public String toString() {
