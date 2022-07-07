@@ -14,6 +14,7 @@ public class PieceTest extends junit.framework.TestCase {
 	private Piece whiteQueen;
 	private Piece blackKing;
 	private Piece whiteKing;
+	private Piece blank;
 	
 	public void setUp() {
 		blackPawn = Piece.createBlackPawn();
@@ -28,6 +29,7 @@ public class PieceTest extends junit.framework.TestCase {
 		whiteQueen = Piece.createWhiteQueen();
 		blackKing = Piece.createBlackKing();
 		whiteKing = Piece.createWhiteKing();
+		blank = Piece.noPiece();
 	}
 	
 	public void testEachPieceHasItsOwnPrintableRepresentation() {
@@ -43,6 +45,7 @@ public class PieceTest extends junit.framework.TestCase {
 		assertEquals(" q ", whiteQueen.getRepresentation());
 		assertEquals(" K ", blackKing.getRepresentation());
 		assertEquals(" k ", whiteKing.getRepresentation());
+		assertEquals(" . ", blank.getRepresentation());
 	}
 	
 	public void testPiecesCanBeBlackOrWhite() {
@@ -59,5 +62,6 @@ public class PieceTest extends junit.framework.TestCase {
 		assertEquals(Piece.Type.BISHOP, blackBishop.getType());
 		assertEquals(Piece.Type.QUEEN, blackQueen.getType());
 		assertEquals(Piece.Type.KING, blackKing.getType());
+		assertEquals(Piece.Type.NO_PIECE, blank.getType());
 	}
 }

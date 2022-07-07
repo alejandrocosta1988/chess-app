@@ -10,7 +10,7 @@ public class Piece {
 	static int blackPiecesCounter = 0;
 
 	enum Color { WHITE, BLACK };
-	enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING };
+	enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING, NO_PIECE };
 	
 	private char printableRepresentation;
 
@@ -22,6 +22,11 @@ public class Piece {
 		incrementPieceCount();
 		this.type = type;
 		setPrintableRepresentation();
+	}
+	
+	private Piece() {
+		this.type = Type.NO_PIECE;
+		this.printableRepresentation = '.';
 	}
 	
 	private void incrementPieceCount() {
@@ -80,6 +85,10 @@ public class Piece {
 	
 	static public int countBlackPieces() {
 		return Piece.blackPiecesCounter;
+	}
+	
+	public static Piece noPiece() {
+		return new Piece();
 	}
 	
 	public static Piece createWhitePawn() {
