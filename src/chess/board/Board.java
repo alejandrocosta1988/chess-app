@@ -1,6 +1,8 @@
 package chess.board;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import chess.pieces.Piece;
 import util.StringUtil;
@@ -163,6 +165,31 @@ public class Board {
 		buffer.append(StringUtil.addNewLine());
 		buffer.append(printRank(rank1));
 		return buffer.toString();
+	}
+
+	public Piece getPiece(String location) {
+		int rank = Character.getNumericValue(location.charAt(1) - 1); // -1 to convert to ArrayList index
+		Character file = location.charAt(0);
+		return getPieceInRank(getRank(rank), file);
+	}
+	
+	private ArrayList<Piece> getRank(int rank) {
+		return board.get(rank);
+	}
+	
+	private Piece getPieceInRank(ArrayList<Piece> rank, Character file) {
+		
+		int filePosition = 0;
+		List<Character> fileOptions = new ArrayList<>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'));
+		
+		for (Character fileOption : fileOptions) {
+			if (file.equals(fileOption)) {
+				filePosition = fileOptions.indexOf(fileOption);
+			}
+		}
+		
+		return rank.get(filePosition);
+		
 	}
 
 	

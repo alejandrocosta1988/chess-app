@@ -48,4 +48,13 @@ public class BoardTest extends TestCase {
 		assertEquals(2, board.countPieces(Piece.Type.BISHOP, Piece.Color.WHITE));
 	}
 	
+	@Test
+	public void testRetrieveAPieceByAGivenLocation() {
+		Piece blackRook = Piece.createBlackRook();
+		Piece whiteKing = Piece.createWhiteKing();
+		assertEquals(blackRook.getRepresentation(), board.getPiece("a8").getRepresentation());
+		assertEquals(whiteKing.getRepresentation(), board.getPiece("e1").getRepresentation());
+	}
+	
+	
 }
