@@ -8,7 +8,7 @@ import util.StringUtil;
 
 public class BoardTest extends TestCase {
 
-	final String EMPTY_RANK = " .  .  .  .  .  .  .  . ";
+	final String EMPTY_RANK = " . ".repeat(8);
 	final String RANK_1 = " r  n  b  q  k  b  n  r ";
 	final String RANK_2 = " p ".repeat(8);
 	final String RANK_7 = RANK_2.toUpperCase();
