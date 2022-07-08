@@ -2,6 +2,7 @@ package chess.board;
 
 import org.junit.Test;
 
+import chess.pieces.Piece;
 import junit.framework.TestCase;
 import util.StringUtil;
 
@@ -21,10 +22,9 @@ public class BoardTest extends TestCase {
 	
 	@Test
 	public void testCreate() {
-		
-		assertEquals(32, board.getNumberOfPieces());
-		assertEquals(" p  p  p  p  p  p  p  p ", board.printRank(board.rank2));
-		assertEquals(" P  P  P  P  P  P  P  P ", board.printRank(board.rank7));
+		assertEquals(32, board.countPieces());
+		assertEquals(RANK_2, board.printRank(board.rank2));
+		assertEquals(RANK_7, board.printRank(board.rank7));
 		assertEquals(
 				RANK_8 + StringUtil.addNewLine() +
 				RANK_7 + StringUtil.addNewLine() +
@@ -34,15 +34,18 @@ public class BoardTest extends TestCase {
 				EMPTY_RANK + StringUtil.addNewLine() +
 				RANK_2 + StringUtil.addNewLine() +
 				RANK_1, board.printBoard());
-		
 	}
 	
 	@Test
 	public void testABoardCreates16BlackAnd16WhitePieces() {
-		
 		assertEquals(16, board.countBlackPieces());
 		assertEquals(16, board.countWhitePieces());
-		
+	}
+	
+	@Test
+	public void testCountsSpecificTypesOfPiecesTakingIntoAccountItsColor() {
+		assertEquals(8, board.countPieces(Piece.Type.PAWN, Piece.Color.BLACK));
+		assertEquals(2, board.countPieces(Piece.Type.BISHOP, Piece.Color.WHITE));
 	}
 	
 }

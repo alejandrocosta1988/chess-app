@@ -6,8 +6,8 @@ package chess.pieces;
  */
 public class Piece {
 	
-	enum Color { WHITE, BLACK };
-	enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING, NO_PIECE };
+	public enum Color { WHITE, BLACK };
+	public enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING, NO_PIECE };
 	
 	private char printableRepresentation;
 
@@ -132,6 +132,10 @@ public class Piece {
 
 	public boolean isNotBlank() {
 		return type != Type.NO_PIECE;
+	}
+
+	public Color getColor() {
+		return color;
 	}
 
 }

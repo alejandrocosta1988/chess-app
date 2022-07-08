@@ -92,7 +92,7 @@ public class Board {
 		board.add(rank8);
 	}
 	
-	public int getNumberOfPieces() {
+	public int countPieces() {
 		int pieces = 0;
 		for (ArrayList<Piece> rank : board) {
 			for (Piece piece : rank) {
@@ -105,10 +105,14 @@ public class Board {
 	}
 	
 	public int countWhitePieces() {
+		return countPieces(Piece.Color.WHITE);
+	}
+	
+	private int countPieces(Piece.Color color) {
 		int pieces = 0;
 		for (ArrayList<Piece> rank : board) {
 			for (Piece piece : rank) {
-				if (piece.isWhite()) {
+				if (piece.getColor() == color) {
 					pieces++;
 				}
 			}
@@ -117,16 +121,21 @@ public class Board {
 	}
 	
 	public int countBlackPieces() {
+		return countPieces(Piece.Color.BLACK);
+	}
+	
+	public int countPieces(Piece.Type type, Piece.Color color) {
 		int pieces = 0;
 		for (ArrayList<Piece> rank : board) {
 			for (Piece piece : rank) {
-				if (piece.isBlack()) {
+				if (piece.getType() == type && piece.getColor() == color) {
 					pieces++;
 				}
 			}
 		}
 		return pieces;
 	}
+	
 	
 	public String printRank(ArrayList<Piece> rank) {
 		StringBuilder buffer = new StringBuilder();
