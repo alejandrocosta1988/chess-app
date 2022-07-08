@@ -13,7 +13,6 @@ public class Board {
 	
 	private ArrayList<ArrayList<Piece>> board = new ArrayList<>(8);
 	
-	private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>();
 	protected ArrayList<Piece> rank1 = new ArrayList<>();
 	protected ArrayList<Piece> rank2 = new ArrayList<>();
 	protected ArrayList<Piece> rank3 = new ArrayList<>(8);
@@ -94,17 +93,17 @@ public class Board {
 	}
 	
 	public int getNumberOfPieces() {
-		return board.get(0).size() + board.get(1).size() + board.get(6).size() + board.get(7).size();
+		int pieces = 0;
+		for (ArrayList<Piece> rank : board) {
+			for (Piece piece : rank) {
+				if (!piece.isBlank()) {
+					pieces++;
+				}
+			}
+		}
+		return pieces;
 	}
 	
-	/**
-	 * Checks if the piece is on the board.
-	 * @param pawn piece to be checked.
-	 */
-	public boolean contains(Piece piece) {
-		return pieces.contains(piece);
-	}
-
 	public String printRank(ArrayList<Piece> rank) {
 		StringBuilder buffer = new StringBuilder();
 		for (Piece piece : rank) {

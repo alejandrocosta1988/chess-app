@@ -64,4 +64,9 @@ public class PieceTest extends junit.framework.TestCase {
 		assertEquals(Piece.Type.KING, blackKing.getType());
 		assertEquals(Piece.Type.NO_PIECE, blank.getType());
 	}
+	
+	public void testChecksIfAPiceIsBlank() {
+		assertTrue(blank.isBlank());
+		assertFalse(whitePawn.isBlank());
+	}
 }

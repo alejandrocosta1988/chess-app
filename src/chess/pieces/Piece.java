@@ -151,4 +151,8 @@ public class Piece {
 		return " " + printableRepresentation + " ";
 	}
 
+	public boolean isBlank() {
+		return type == Type.NO_PIECE;
+	}
+
 }
