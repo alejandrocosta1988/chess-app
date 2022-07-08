@@ -17,10 +17,6 @@ public class Board {
 	
 	protected ArrayList<Piece> rank1 = new ArrayList<>();
 	protected ArrayList<Piece> rank2 = new ArrayList<>();
-	protected ArrayList<Piece> rank3 = new ArrayList<>(8);
-	protected ArrayList<Piece> rank4 = new ArrayList<>(8);
-	protected ArrayList<Piece> rank5 = new ArrayList<>(8);
-	protected ArrayList<Piece> rank6 = new ArrayList<>(8);
 	protected ArrayList<Piece> rank7 = new ArrayList<>();
 	protected ArrayList<Piece> rank8 = new ArrayList<>();
 	
@@ -29,15 +25,17 @@ public class Board {
 	}
 	
 	private void initialize() {
-		
-		ArrayList<Piece> emptyRank = new ArrayList<>(Arrays.asList(
-				Piece.noPiece(), Piece.noPiece(), Piece.noPiece(), Piece.noPiece(), 
-				Piece.noPiece(), Piece.noPiece(), Piece.noPiece(), Piece.noPiece()));
-		
 		for (int rank = 0; rank < 8; rank++) {
-			board.add(emptyRank);
+			board.add(generateEmptyRank());
 		}
-		
+	}
+	
+	private ArrayList<Piece> generateEmptyRank() {
+		ArrayList<Piece> emptyRank = new ArrayList<>(8);
+		for (int file = 0; file < 8; file++) {
+			emptyRank.add(Piece.noPiece());
+		}
+		return emptyRank;
 	}
 
 	public void setUp() {
