@@ -138,32 +138,21 @@ public class Board {
 		return pieces;
 	}
 	
-	
+	public String printBoard() {
+		StringBuilder buffer = new StringBuilder();
+		for (int i = board.size() - 1; i > 0; i--) {
+			buffer.append(printRank(board.get(i)));
+			buffer.append(StringUtil.addNewLine());
+		}
+		buffer.append(printRank(board.get(0)));
+		return buffer.toString();
+	}
+
 	public String printRank(ArrayList<Piece> rank) {
 		StringBuilder buffer = new StringBuilder();
 		for (Piece piece : rank) {
 			buffer.append(piece.getRepresentation());
 		}
-		return buffer.toString();
-	}
-	
-	public String printBoard() {
-		StringBuilder buffer = new StringBuilder();
-		buffer.append(printRank(rank8));
-		buffer.append(StringUtil.addNewLine());
-		buffer.append(printRank(rank7));
-		buffer.append(StringUtil.addNewLine());
-		buffer.append(printRank(rank6));
-		buffer.append(StringUtil.addNewLine());
-		buffer.append(printRank(rank5));
-		buffer.append(StringUtil.addNewLine());
-		buffer.append(printRank(rank4));
-		buffer.append(StringUtil.addNewLine());
-		buffer.append(printRank(rank3));
-		buffer.append(StringUtil.addNewLine());
-		buffer.append(printRank(rank2));
-		buffer.append(StringUtil.addNewLine());
-		buffer.append(printRank(rank1));
 		return buffer.toString();
 	}
 
@@ -191,7 +180,5 @@ public class Board {
 		return rank.get(filePosition);
 		
 	}
-
-	
 
 }

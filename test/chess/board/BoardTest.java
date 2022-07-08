@@ -56,5 +56,4 @@ public class BoardTest extends TestCase {
 		assertEquals(whiteKing.getRepresentation(), board.getPiece("e1").getRepresentation());
 	}
 	
-	
 }
