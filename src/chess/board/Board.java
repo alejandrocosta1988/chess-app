@@ -25,7 +25,19 @@ public class Board {
 	protected ArrayList<Piece> rank8 = new ArrayList<>();
 	
 	public Board() {
-		super();
+		initialize();
+	}
+	
+	private void initialize() {
+		
+		ArrayList<Piece> emptyRank = new ArrayList<>(Arrays.asList(
+				Piece.noPiece(), Piece.noPiece(), Piece.noPiece(), Piece.noPiece(), 
+				Piece.noPiece(), Piece.noPiece(), Piece.noPiece(), Piece.noPiece()));
+		
+		for (int rank = 0; rank < 8; rank++) {
+			board.add(emptyRank);
+		}
+		
 	}
 
 	public void setUp() {
@@ -39,7 +51,7 @@ public class Board {
 		rank1.add(Piece.createWhiteKnight());
 		rank1.add(Piece.createWhiteRook());
 		
-		board.add(rank1);
+		board.set(0, rank1);
 		
 		rank2.add(Piece.createWhitePawn());
 		rank2.add(Piece.createWhitePawn());
@@ -50,27 +62,7 @@ public class Board {
 		rank2.add(Piece.createWhitePawn());
 		rank2.add(Piece.createWhitePawn());
 		
-		board.add(rank2);
-		
-		for (int column = 1; column <= 8; column++) {
-			rank3.add(Piece.noPiece());
-		}
-		board.add(rank3);
-
-		for (int column = 1; column <= 8; column++) {
-			rank4.add(Piece.noPiece());
-		}
-		board.add(rank4);
-
-		for (int column = 1; column <= 8; column++) {
-			rank5.add(Piece.noPiece());
-		}
-		board.add(rank5);
-
-		for (int column = 1; column <= 8; column++) {
-			rank6.add(Piece.noPiece());
-		}
-		board.add(rank6);
+		board.set(1, rank2);
 		
 		rank7.add(Piece.createBlackPawn());
 		rank7.add(Piece.createBlackPawn());
@@ -81,7 +73,7 @@ public class Board {
 		rank7.add(Piece.createBlackPawn());
 		rank7.add(Piece.createBlackPawn());
 		
-		board.add(rank7);
+		board.set(6, rank7);
 		
 		rank8.add(Piece.createBlackRook());
 		rank8.add(Piece.createBlackKnight());
@@ -92,7 +84,7 @@ public class Board {
 		rank8.add(Piece.createBlackKnight());
 		rank8.add(Piece.createBlackRook());
 		
-		board.add(rank8);
+		board.set(7, rank8);
 	}
 	
 	public int countPieces() {

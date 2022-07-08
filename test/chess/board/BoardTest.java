@@ -42,6 +42,16 @@ public class BoardTest extends TestCase {
 	public void testABoardIsEmptyWhenCreated() {
 		Board emptyBoard = new Board();
 		assertEquals(0, emptyBoard.countPieces());
+		assertEquals(
+				EMPTY_RANK + StringUtil.addNewLine() +
+				EMPTY_RANK + StringUtil.addNewLine() +
+				EMPTY_RANK + StringUtil.addNewLine() +
+				EMPTY_RANK + StringUtil.addNewLine() +
+				EMPTY_RANK + StringUtil.addNewLine() +
+				EMPTY_RANK + StringUtil.addNewLine() +
+				EMPTY_RANK + StringUtil.addNewLine() +
+				EMPTY_RANK,
+				emptyBoard.printBoard());
 	}
 	
 	@Test
