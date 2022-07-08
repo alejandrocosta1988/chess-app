@@ -6,9 +6,6 @@ package chess.pieces;
  */
 public class Piece {
 	
-	static int whitePiecesCounter = 0;
-	static int blackPiecesCounter = 0;
-
 	enum Color { WHITE, BLACK };
 	enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING, NO_PIECE };
 	
@@ -19,7 +16,6 @@ public class Piece {
 	
 	private Piece(Color color, Type type) {
 		this.color = color;
-		incrementPieceCount();
 		this.type = type;
 		setPrintableRepresentation();
 	}
@@ -27,14 +23,6 @@ public class Piece {
 	private Piece() {
 		this.type = Type.NO_PIECE;
 		this.printableRepresentation = '.';
-	}
-	
-	private void incrementPieceCount() {
-		if (isWhite()) {
-			++Piece.whitePiecesCounter;
-			return;
-		}
-		++Piece.blackPiecesCounter;
 	}
 	
 	private void setPrintableRepresentation() {
@@ -63,7 +51,7 @@ public class Piece {
 	}
 	
 	public boolean isBlack() {
-		return color.equals(Color.BLACK);
+		return color == Color.BLACK;
 	}
 	
 	private void representBlackPiece(int stringIndex) {
@@ -72,19 +60,6 @@ public class Piece {
 	
 	private void representWhitePiece(int stringIndex) {
 		printableRepresentation = type.toString().toLowerCase().charAt(stringIndex);
-	}
-	
-	static public void resetPieceCounter() {
-		Piece.whitePiecesCounter = 0;
-		Piece.blackPiecesCounter = 0;
-	}
-	
-	static public int countWhitePieces() {
-		return Piece.whitePiecesCounter;
-	}
-	
-	static public int countBlackPieces() {
-		return Piece.blackPiecesCounter;
 	}
 	
 	public static Piece noPiece() {
@@ -140,7 +115,7 @@ public class Piece {
 	}
 	
 	public boolean isWhite() {
-		return color.equals(Color.WHITE);
+		return color == Color.WHITE;
 	}
 
 	public Type getType() {
@@ -153,6 +128,10 @@ public class Piece {
 
 	public boolean isBlank() {
 		return type == Type.NO_PIECE;
+	}
+
+	public boolean isNotBlank() {
+		return type != Type.NO_PIECE;
 	}
 
 }

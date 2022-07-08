@@ -96,7 +96,31 @@ public class Board {
 		int pieces = 0;
 		for (ArrayList<Piece> rank : board) {
 			for (Piece piece : rank) {
-				if (!piece.isBlank()) {
+				if (piece.isNotBlank()) {
+					pieces++;
+				}
+			}
+		}
+		return pieces;
+	}
+	
+	public int countWhitePieces() {
+		int pieces = 0;
+		for (ArrayList<Piece> rank : board) {
+			for (Piece piece : rank) {
+				if (piece.isWhite()) {
+					pieces++;
+				}
+			}
+		}
+		return pieces;
+	}
+	
+	public int countBlackPieces() {
+		int pieces = 0;
+		for (ArrayList<Piece> rank : board) {
+			for (Piece piece : rank) {
+				if (piece.isBlack()) {
 					pieces++;
 				}
 			}
@@ -131,5 +155,7 @@ public class Board {
 		buffer.append(printRank(rank1));
 		return buffer.toString();
 	}
+
+	
 
 }

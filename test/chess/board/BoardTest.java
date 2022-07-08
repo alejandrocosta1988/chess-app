@@ -2,7 +2,6 @@ package chess.board;
 
 import org.junit.Test;
 
-import chess.pieces.Piece;
 import junit.framework.TestCase;
 import util.StringUtil;
 
@@ -17,7 +16,6 @@ public class BoardTest extends TestCase {
 	private Board board;
 	
 	public void setUp() {
-		Piece.resetPieceCounter();
 		board = new Board();
 	}
 	
@@ -42,8 +40,8 @@ public class BoardTest extends TestCase {
 	@Test
 	public void testABoardCreates16BlackAnd16WhitePieces() {
 		
-		assertEquals(16, Piece.countWhitePieces());
-		assertEquals(16, Piece.countBlackPieces());
+		assertEquals(16, board.countBlackPieces());
+		assertEquals(16, board.countWhitePieces());
 		
 	}
 	
