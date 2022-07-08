@@ -18,6 +18,7 @@ public class BoardTest extends TestCase {
 	
 	public void setUp() {
 		board = new Board();
+		board.setUp();
 	}
 	
 	@Test
@@ -33,7 +34,14 @@ public class BoardTest extends TestCase {
 				EMPTY_RANK + StringUtil.addNewLine() +
 				EMPTY_RANK + StringUtil.addNewLine() +
 				RANK_2 + StringUtil.addNewLine() +
-				RANK_1, board.printBoard());
+				RANK_1, 
+				board.printBoard());
+	}
+	
+	@Test
+	public void testABoardIsEmptyWhenCreated() {
+		Board emptyBoard = new Board();
+		assertEquals(0, emptyBoard.countPieces());
 	}
 	
 	@Test

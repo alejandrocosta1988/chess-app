@@ -25,10 +25,11 @@ public class Board {
 	protected ArrayList<Piece> rank8 = new ArrayList<>();
 	
 	public Board() {
-		initialize();
+		super();
 	}
 
-	public void initialize() {
+	public void setUp() {
+		
 		rank1.add(Piece.createWhiteRook());
 		rank1.add(Piece.createWhiteKnight());
 		rank1.add(Piece.createWhiteBishop());
@@ -180,5 +181,7 @@ public class Board {
 		return rank.get(filePosition);
 		
 	}
+
+	
 
 }
