@@ -148,49 +148,37 @@ public class Board {
 	}
 
 	public Piece getPiece(String location) {
-		int rank = Character.getNumericValue(location.charAt(1) - 1); // -1 to convert to ArrayList index
-		Character file = location.charAt(0);
-		return getPieceInRank(getRank(rank), file);
+		int rank = isolateRankNumberFromStringLocation(location);
+		return getPieceInRank(getRank(rank), location.charAt(0));
+	}
+	
+	private int isolateRankNumberFromStringLocation(String location) {
+		int correctionToConvertToIndex = 1;
+		return Character.getNumericValue(location.charAt(1)) - correctionToConvertToIndex;
 	}
 	
 	private ArrayList<Piece> getRank(int rank) {
 		return board.get(rank);
 	}
 	
-	private Piece getPieceInRank(ArrayList<Piece> rank, Character file) {
-		
-		int filePosition = 0;
+	private Piece getPieceInRank(ArrayList<Piece> rank, Character fileCharacter) {
+		return rank.get(fileCharacterToFileInt(fileCharacter));
+	}
+	
+	private int fileCharacterToFileInt(Character fileCharacter) {
+		int file = 0;
 		List<Character> fileOptions = new ArrayList<>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'));
-		
 		for (Character fileOption : fileOptions) {
-			if (file.equals(fileOption)) {
-				filePosition = fileOptions.indexOf(fileOption);
-			}
+			if (fileCharacter.equals(fileOption))
+				file = fileOptions.indexOf(fileOption);
 		}
-		
-		return rank.get(filePosition);
-		
+		return file;
 	}
 	
 	public void placePieceAt(String location, Piece piece) {
-		int rank = Character.getNumericValue(location.charAt(1) - 1); // -1 to convert to ArrayList index
-		Character file = location.charAt(0);
-		
-		int filePosition = 0;
-		List<Character> fileOptions = new ArrayList<>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'));
-		
-		for (Character fileOption : fileOptions) {
-			if (file.equals(fileOption)) {
-				filePosition = fileOptions.indexOf(fileOption);
-			}
-		}
-		
-		ArrayList<Piece> boardRank = getRank(rank);
-		boardRank.set(filePosition, piece);
-		board.set(rank, boardRank);
-		
+		int rank = isolateRankNumberFromStringLocation(location);
+		int filePosition = fileCharacterToFileInt(location.charAt(0));
+		getRank(rank).set(filePosition, piece);
 	}
-
-	
 
 }
