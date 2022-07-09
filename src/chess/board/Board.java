@@ -51,26 +51,16 @@ public class Board {
 		
 		board.set(0, rank1);
 		
-		rank2.add(Piece.createWhitePawn());
-		rank2.add(Piece.createWhitePawn());
-		rank2.add(Piece.createWhitePawn());
-		rank2.add(Piece.createWhitePawn());
-		rank2.add(Piece.createWhitePawn());
-		rank2.add(Piece.createWhitePawn());
-		rank2.add(Piece.createWhitePawn());
-		rank2.add(Piece.createWhitePawn());
-		
+		rank2 = getRank(1);
+		for (int file = 0; file < 8; file++) {
+			rank2.set(file, Piece.createWhitePawn());
+		}
 		board.set(1, rank2);
 		
-		rank7.add(Piece.createBlackPawn());
-		rank7.add(Piece.createBlackPawn());
-		rank7.add(Piece.createBlackPawn());
-		rank7.add(Piece.createBlackPawn());
-		rank7.add(Piece.createBlackPawn());
-		rank7.add(Piece.createBlackPawn());
-		rank7.add(Piece.createBlackPawn());
-		rank7.add(Piece.createBlackPawn());
-		
+		rank7 = getRank(6);
+		for (int file = 0; file < 8; file++) {
+			rank7.set(file, Piece.createBlackPawn());
+		}
 		board.set(6, rank7);
 		
 		rank8.add(Piece.createBlackRook());
