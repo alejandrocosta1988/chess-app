@@ -55,7 +55,21 @@ public class BoardTest extends TestCase {
 	}
 	
 	@Test
-	public void testABoardCreates16BlackAnd16WhitePieces() {
+	public void testPiecesCanBePlacedAtGivenLocationsOnABoard() {
+		Board emptyBoard = new Board();
+		Piece blackKing = Piece.createBlackKing();
+		Piece blackRook = Piece.createBlackRook();
+		Piece whiteKing = Piece.createWhiteKing();
+		emptyBoard.placePieceAt("b6", blackKing);
+		emptyBoard.placePieceAt("b5", blackRook);
+		emptyBoard.placePieceAt("c4", whiteKing);
+		assertEquals(blackKing, emptyBoard.getPiece("b6"));
+		assertEquals(blackRook, emptyBoard.getPiece("b5"));
+		assertEquals(whiteKing, emptyBoard.getPiece("c4"));
+	}
+	
+	@Test
+	public void testABoardIsSetUpWith16BlackAnd16WhitePieces() {
 		assertEquals(16, board.countBlackPieces());
 		assertEquals(16, board.countWhitePieces());
 	}

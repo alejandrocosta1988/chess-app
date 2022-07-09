@@ -171,6 +171,25 @@ public class Board {
 		return rank.get(filePosition);
 		
 	}
+	
+	public void placePieceAt(String location, Piece piece) {
+		int rank = Character.getNumericValue(location.charAt(1) - 1); // -1 to convert to ArrayList index
+		Character file = location.charAt(0);
+		
+		int filePosition = 0;
+		List<Character> fileOptions = new ArrayList<>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'));
+		
+		for (Character fileOption : fileOptions) {
+			if (file.equals(fileOption)) {
+				filePosition = fileOptions.indexOf(fileOption);
+			}
+		}
+		
+		ArrayList<Piece> boardRank = getRank(rank);
+		boardRank.set(filePosition, piece);
+		board.set(rank, boardRank);
+		
+	}
 
 	
 
