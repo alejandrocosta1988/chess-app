@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import chess.pieces.Piece;
+import chess.pieces.Piece.Color;
+import chess.pieces.Piece.Type;
 import util.StringUtil;
 
 /**
@@ -169,6 +171,33 @@ public class Board {
 		int rank = isolateRankNumberFromStringLocation(location);
 		int filePosition = fileCharacterToFileInt(location.charAt(0));
 		getRank(rank).set(filePosition, piece);
+	}
+
+	public double evaluateStrength(Color pieceColor) {
+		double score = 0d;
+		List<Integer> pawnFiles = getPawnFiles(pieceColor);
+		for (ArrayList<Piece> rank : board) {
+			for (int file = 0; file < 8; file++) {
+				Piece piece = rank.get(file);
+				if (piece.getColor() == pieceColor) {
+					score += piece.getScore();
+				}
+			}
+		}
+		return score;
+	}
+	
+	private List<Integer> getPawnFiles(Color pieceColor) {
+		List<Integer> pawnFiles = new ArrayList<>();
+		for (ArrayList<Piece> rank : board) {
+			for (int file = 0; file < 8; file++) {
+				Piece piece = rank.get(file);
+				if (piece.getColor() == pieceColor && piece.getType() == Type.PAWN) {
+					pawnFiles.add(file);
+				}
+			}
+		}
+		return pawnFiles;
 	}
 
 }

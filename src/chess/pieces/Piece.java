@@ -14,6 +14,8 @@ public class Piece {
 	private Color color;
 	private Type type;
 	
+	private Score score = new ScoreImplementation();
+	
 	private Piece(Color color, Type type) {
 		this.color = color;
 		this.type = type;
@@ -138,4 +140,8 @@ public class Piece {
 		return color;
 	}
 
+	public double getScore() {
+		return score.calculateScore(type);
+	}
+	
 }
