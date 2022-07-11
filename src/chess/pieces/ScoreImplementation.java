@@ -20,6 +20,9 @@ public class ScoreImplementation implements Score {
 		if (pieceType == Piece.Type.QUEEN) {
 			score = getQueenScore();
 		}
+		if (pieceType == Piece.Type.KNIGHT) {
+			score = getKnightScore();
+		}
 		return score;
 	}
 	
@@ -41,6 +44,10 @@ public class ScoreImplementation implements Score {
 	
 	private double getQueenScore() {
 		return 9d;
+	}
+	
+	private double getKnightScore() {
+		return 2.5;
 	}
 
 }

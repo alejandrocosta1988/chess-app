@@ -6,7 +6,6 @@ import java.util.List;
 
 import chess.pieces.Piece;
 import chess.pieces.Piece.Color;
-import chess.pieces.Piece.Type;
 import util.StringUtil;
 
 /**
@@ -175,7 +174,6 @@ public class Board {
 
 	public double evaluateStrength(Color pieceColor) {
 		double score = 0d;
-		List<Integer> pawnFiles = getPawnFiles(pieceColor);
 		for (ArrayList<Piece> rank : board) {
 			for (int file = 0; file < 8; file++) {
 				Piece piece = rank.get(file);
@@ -187,17 +185,4 @@ public class Board {
 		return score;
 	}
 	
-	private List<Integer> getPawnFiles(Color pieceColor) {
-		List<Integer> pawnFiles = new ArrayList<>();
-		for (ArrayList<Piece> rank : board) {
-			for (int file = 0; file < 8; file++) {
-				Piece piece = rank.get(file);
-				if (piece.getColor() == pieceColor && piece.getType() == Type.PAWN) {
-					pawnFiles.add(file);
-				}
-			}
-		}
-		return pawnFiles;
-	}
-
 }

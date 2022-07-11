@@ -110,17 +110,15 @@ public class BoardTest extends TestCase {
 		strengthBoard.placePieceAt("f1", Piece.createWhiteKing());
 		assertEquals(5d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 		strengthBoard.placePieceAt("f2", Piece.createWhitePawn());
-//		assertEquals(5.5, strengthBoard.evaluateStrength(Piece.Color.WHITE));
-//		strengthBoard.placePieceAt("g2", Piece.createWhitePawn());
-//		assertEquals(6.5, strengthBoard.evaluateStrength(Piece.Color.WHITE));
-//		strengthBoard.placePieceAt("f3", Piece.createWhitePawn());
-//		assertEquals(7d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
-//		strengthBoard.placePieceAt("h3", Piece.createWhitePawn());
-//		assertEquals(8d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
-//		strengthBoard.placePieceAt("f4", Piece.createWhiteKnight());
-//		strengthBoard.placePieceAt("g4", Piece.createWhiteQueen());
-		
-		
+		assertEquals(6d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
+		strengthBoard.placePieceAt("g2", Piece.createWhitePawn());
+		assertEquals(7d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
+		strengthBoard.placePieceAt("h3", Piece.createWhitePawn());
+		assertEquals(8d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
+		strengthBoard.placePieceAt("f4", Piece.createWhiteKnight());
+		assertEquals(10.5, strengthBoard.evaluateStrength(Piece.Color.WHITE));
+		strengthBoard.placePieceAt("g4", Piece.createWhiteQueen());
+		assertEquals(19.5, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 	}
 	
 }
