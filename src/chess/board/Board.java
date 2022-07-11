@@ -179,10 +179,26 @@ public class Board {
 				Piece piece = rank.get(file);
 				if (piece.getColor() == pieceColor) {
 					score += piece.getScore();
+					if (piece.getType() == Piece.Type.PAWN) {
+						if (checkForMoreThanOnePawnInSameFile(file, pieceColor)) {
+							score -= 0.5;
+						}
+					}
 				}
 			}
 		}
 		return score;
+	}
+	
+	private boolean checkForMoreThanOnePawnInSameFile(int file, Piece.Color pieceColor) {
+		List<Piece> pawnsInFile = new ArrayList<>();
+		for (ArrayList<Piece> rank : board) {
+			Piece piece = rank.get(file);
+			if (piece.getColor() == pieceColor && piece.getType() == Piece.Type.PAWN) {
+				pawnsInFile.add(piece);
+			}
+		}
+		return pawnsInFile.size() > 1;
 	}
 	
 }

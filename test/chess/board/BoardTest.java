@@ -92,33 +92,34 @@ public class BoardTest extends TestCase {
 	public void testEvaluateTheStrengthOfWhiteAndBlackPieces() {
 		Board strengthBoard = new Board();
 		strengthBoard.placePieceAt("b8", Piece.createBlackKing());
-		assertEquals(0d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
 		strengthBoard.placePieceAt("c8", Piece.createBlackRook());
-		assertEquals(5d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
 		strengthBoard.placePieceAt("a7", Piece.createBlackPawn());
-		assertEquals(6d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
 		strengthBoard.placePieceAt("c7", Piece.createBlackPawn());
-		assertEquals(7d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
 		strengthBoard.placePieceAt("d7", Piece.createBlackBishop());
-		assertEquals(10d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
 		strengthBoard.placePieceAt("b6", Piece.createBlackPawn());
-		assertEquals(11d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
 		strengthBoard.placePieceAt("e6", Piece.createBlackQueen());
 		assertEquals(20d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
+		
 		strengthBoard.placePieceAt("e1", Piece.createWhiteRook());
-		assertEquals(5d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 		strengthBoard.placePieceAt("f1", Piece.createWhiteKing());
-		assertEquals(5d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 		strengthBoard.placePieceAt("f2", Piece.createWhitePawn());
-		assertEquals(6d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 		strengthBoard.placePieceAt("g2", Piece.createWhitePawn());
-		assertEquals(7d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 		strengthBoard.placePieceAt("h3", Piece.createWhitePawn());
-		assertEquals(8d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 		strengthBoard.placePieceAt("f4", Piece.createWhiteKnight());
-		assertEquals(10.5, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 		strengthBoard.placePieceAt("g4", Piece.createWhiteQueen());
 		assertEquals(19.5, strengthBoard.evaluateStrength(Piece.Color.WHITE));
+	}
+	
+	@Test
+	public void testPawnsGetHalfScoreIfThereAreMoreThanOneInTheSameFile() {
+		Board strengthBoard = new Board();
+		strengthBoard.placePieceAt("c8", Piece.createBlackKing());
+		strengthBoard.placePieceAt("d8", Piece.createBlackRook());
+		strengthBoard.placePieceAt("f2", Piece.createWhitePawn());
+		strengthBoard.placePieceAt("f4", Piece.createWhitePawn());
+		strengthBoard.placePieceAt("d4", Piece.createWhitePawn());
+		strengthBoard.placePieceAt("e2", Piece.createWhiteKing());
+		assertEquals(2d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 	}
 	
 }
