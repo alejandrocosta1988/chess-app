@@ -50,6 +50,7 @@ public class ScoreImplementation implements Score {
 		return 2.5;
 	}
 	
+	@Override
 	public double calculateHalfPawnScore() {
 		return getPawnScore() / 2;
 	}
