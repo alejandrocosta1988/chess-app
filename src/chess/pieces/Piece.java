@@ -4,7 +4,7 @@ package chess.pieces;
  * Represents a chess piece.
  * @author alejandro_costa
  */
-public class Piece {
+public class Piece implements Comparable<Piece> {
 	
 	public enum Color { WHITE, BLACK };
 	public enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING, NO_PIECE };
@@ -163,6 +163,11 @@ public class Piece {
 
 	public double getStrength() {
 		return strength;
+	}
+
+	@Override
+	public int compareTo(Piece that) {
+		return Double.compare(that.getStrength(), this.getStrength());
 	}
 	
 }

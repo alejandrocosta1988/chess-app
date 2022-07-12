@@ -128,4 +128,14 @@ public class BoardTest extends TestCase {
 		assertEquals(1.0, board.getPiece("d2").getStrength());
 	}
 	
+	@Test
+	public void testWhiteOrBlackPiecesAreGatheredInACollectionSortedAccordingToTheirStrength() {
+		board.collectWhitePieces();
+		assertEquals(Piece.Type.QUEEN, board.getWhitePieces().get(0).getType());
+		assertEquals(Piece.Type.ROOK, board.getWhitePieces().get(1).getType());
+		board.collectBlackPieces();
+		assertEquals(Piece.Type.QUEEN, board.getBlackPieces().get(0).getType());
+		assertEquals(Piece.Type.ROOK, board.getBlackPieces().get(1).getType());
+	}
+	
 }

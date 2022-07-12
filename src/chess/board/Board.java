@@ -2,6 +2,7 @@ package chess.board;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import chess.pieces.Piece;
@@ -15,6 +16,8 @@ import util.StringUtil;
 public class Board {
 	
 	private ArrayList<ArrayList<Piece>> board = new ArrayList<>(8);
+	private List<Piece> whitePieces = new ArrayList<>();
+	private List<Piece> blackPieces = new ArrayList<>();
 	
 	public Board() {
 		initialize();
@@ -200,6 +203,38 @@ public class Board {
 				}
 			}
 		}
+	}
+
+	public void collectWhitePieces() {
+		assignStrengthToPieces();
+		for (ArrayList<Piece> rank : board) {
+			for (Piece piece : rank) {
+				if (piece.isWhite()) {
+					whitePieces.add(piece);
+				}
+			}
+		}
+	}
+
+	public List<Piece> getWhitePieces() {
+		Collections.sort(whitePieces);
+		return whitePieces;
+	}
+
+	public void collectBlackPieces() {
+		assignStrengthToPieces();
+		for (ArrayList<Piece> rank : board) {
+			for (Piece piece : rank) {
+				if (piece.isBlack()) {
+					blackPieces.add(piece);
+				}
+			}
+		}
+	}
+
+	public List<Piece> getBlackPieces() {
+		Collections.sort(blackPieces);
+		return blackPieces;
 	}
 	
 }
