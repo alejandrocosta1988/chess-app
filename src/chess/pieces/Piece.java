@@ -144,4 +144,12 @@ public class Piece {
 		return score.calculateScore(type);
 	}
 	
+	public boolean isPawn() {
+		return type == Type.PAWN;
+	}
+	
+	public boolean isColor(Color color) {
+		return this.color == color;
+	}
+	
 }
