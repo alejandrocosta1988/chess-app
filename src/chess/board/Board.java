@@ -195,22 +195,22 @@ public class Board {
 		return pawnsInFile.size() > 1;
 	}
 
-	public void assignStrengthToPieces() {
-		for (ArrayList<Piece> rank : board) {
-			for (Piece piece : rank) {
-				if (piece.isNotBlank()) {
-					piece.setStrength();
-				}
-			}
-		}
-	}
-
 	public void collectWhitePieces() {
 		assignStrengthToPieces();
 		for (ArrayList<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.isWhite()) {
 					whitePieces.add(piece);
+				}
+			}
+		}
+	}
+	
+	public void assignStrengthToPieces() {
+		for (ArrayList<Piece> rank : board) {
+			for (Piece piece : rank) {
+				if (piece.isNotBlank()) {
+					piece.setStrength();
 				}
 			}
 		}
