@@ -40,40 +40,37 @@ public class Board {
 	}
 
 	public void setUp() {
-		
-		rank1.add(Piece.createWhiteRook());
-		rank1.add(Piece.createWhiteKnight());
-		rank1.add(Piece.createWhiteBishop());
-		rank1.add(Piece.createWhiteQueen());
-		rank1.add(Piece.createWhiteKing());
-		rank1.add(Piece.createWhiteBishop());
-		rank1.add(Piece.createWhiteKnight());
-		rank1.add(Piece.createWhiteRook());
-		
-		board.set(0, rank1);
-		
-		rank2 = getRank(1);
+		board.set(0, setUpWhiteElitePieces());
+		setUpWhitePawns();
+		setUpBlackPawns();
+		board.set(7, createBlackElitePieces());
+	}
+	
+	private ArrayList<Piece> setUpWhiteElitePieces() {
+		return new ArrayList<Piece>(Arrays.asList(
+				Piece.createWhiteRook(), Piece.createWhiteKnight(),
+				Piece.createWhiteBishop(), Piece.createWhiteQueen(), Piece.createWhiteKing(),
+				Piece.createWhiteBishop(), Piece.createWhiteKnight(), Piece.createWhiteRook()));
+	}
+	
+	private void setUpWhitePawns() {
+		ArrayList<Piece> whitePawnsRank = getRank(1);
 		for (int file = 0; file < 8; file++) {
-			rank2.set(file, Piece.createWhitePawn());
+			whitePawnsRank.set(file, Piece.createWhitePawn());
 		}
-		board.set(1, rank2);
-		
-		rank7 = getRank(6);
+	}
+	
+	private void setUpBlackPawns() {
+		ArrayList<Piece> blackPawnsRank = getRank(6);
 		for (int file = 0; file < 8; file++) {
-			rank7.set(file, Piece.createBlackPawn());
+			blackPawnsRank.set(file, Piece.createBlackPawn());
 		}
-		board.set(6, rank7);
-		
-		rank8.add(Piece.createBlackRook());
-		rank8.add(Piece.createBlackKnight());
-		rank8.add(Piece.createBlackBishop());
-		rank8.add(Piece.createBlackQueen());
-		rank8.add(Piece.createBlackKing());
-		rank8.add(Piece.createBlackBishop());
-		rank8.add(Piece.createBlackKnight());
-		rank8.add(Piece.createBlackRook());
-		
-		board.set(7, rank8);
+	}
+	
+	private ArrayList<Piece> createBlackElitePieces() {
+		return new ArrayList<Piece>(Arrays.asList(Piece.createBlackRook(), Piece.createBlackKnight(),
+				Piece.createBlackBishop(), Piece.createBlackQueen(), Piece.createBlackKing(),
+				Piece.createBlackBishop(), Piece.createBlackKnight(), Piece.createBlackRook()));
 	}
 	
 	public int countPieces() {

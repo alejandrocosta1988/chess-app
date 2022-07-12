@@ -24,8 +24,6 @@ public class BoardTest extends TestCase {
 	@Test
 	public void testCreate() {
 		assertEquals(32, board.countPieces());
-		assertEquals(RANK_2, board.printRank(board.rank2));
-		assertEquals(RANK_7, board.printRank(board.rank7));
 		assertEquals(
 				RANK_8 + StringUtil.addNewLine() +
 				RANK_7 + StringUtil.addNewLine() +
