@@ -120,4 +120,12 @@ public class BoardTest extends TestCase {
 		assertEquals(2d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 	}
 	
+	@Test
+	public void testAssignEachPieceAStrength() {
+		board.assignStrengthToPieces();
+		assertEquals(5.0, board.getPiece("a8").getStrength());
+		assertEquals(9.0, board.getPiece("d1").getStrength());
+		assertEquals(1.0, board.getPiece("d2").getStrength());
+	}
+	
 }

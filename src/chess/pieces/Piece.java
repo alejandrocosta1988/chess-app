@@ -15,6 +15,7 @@ public class Piece {
 	private Type type;
 	
 	private Score score = new ScoreImplementation();
+	private double strength;
 	
 	private Piece(Color color, Type type) {
 		this.color = color;
@@ -154,6 +155,14 @@ public class Piece {
 	
 	public boolean isColor(Color color) {
 		return this.color == color;
+	}
+	
+	public void setStrength() {
+		strength = getScore();
+	}
+
+	public double getStrength() {
+		return strength;
 	}
 	
 }
