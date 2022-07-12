@@ -16,11 +16,6 @@ public class Board {
 	
 	private ArrayList<ArrayList<Piece>> board = new ArrayList<>(8);
 	
-	protected ArrayList<Piece> rank1 = new ArrayList<>();
-	protected ArrayList<Piece> rank2 = new ArrayList<>();
-	protected ArrayList<Piece> rank7 = new ArrayList<>();
-	protected ArrayList<Piece> rank8 = new ArrayList<>();
-	
 	public Board() {
 		initialize();
 	}
