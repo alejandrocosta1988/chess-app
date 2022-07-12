@@ -49,5 +49,9 @@ public class ScoreImplementation implements Score {
 	private double getKnightScore() {
 		return 2.5;
 	}
+	
+	public double calculateHalfPawnScore() {
+		return getPawnScore() / 2;
+	}
 
 }

@@ -171,7 +171,7 @@ public class Board {
 				Piece piece = rank.get(file);
 				if (piece.isColor(pieceColor)) {
 					if (piece.isPawn() && isThereOtherPawnInSameFile(file, pieceColor)) {
-						score += 0.5;
+						score += piece.getHalfPawnScore();
 						continue;
 					}
 					score += piece.getScore();

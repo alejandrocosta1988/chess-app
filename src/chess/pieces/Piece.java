@@ -144,6 +144,10 @@ public class Piece {
 		return score.calculateScore(type);
 	}
 	
+	public double getHalfPawnScore() {
+		return score.calculateHalfPawnScore();
+	}
+	
 	public boolean isPawn() {
 		return type == Type.PAWN;
 	}
