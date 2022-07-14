@@ -4,26 +4,15 @@ public class ScoreImplementation implements Score {
 	
 	@Override
 	public double calculateScore(Piece.Type pieceType) {
-		double score = 0;
-		if (pieceType == Piece.Type.KING) {
-			score = getKingScore();
+		switch (pieceType) {
+			case KING: return getKingScore();
+			case QUEEN: return getQueenScore();
+			case BISHOP: return getBishopScore();
+			case ROOK: return getRookScore();
+			case KNIGHT: return getKnightScore();
+			case PAWN: return getPawnScore();
+			default: return 0;
 		}
-		if (pieceType == Piece.Type.ROOK) {
-			score = getRookScore();
-		}
-		if (pieceType == Piece.Type.PAWN) {
-			score = getPawnScore();
-		}
-		if (pieceType == Piece.Type.BISHOP) {
-			score = getBishopScore();
-		}
-		if (pieceType == Piece.Type.QUEEN) {
-			score = getQueenScore();
-		}
-		if (pieceType == Piece.Type.KNIGHT) {
-			score = getKnightScore();
-		}
-		return score;
 	}
 	
 	private double getKingScore() {
