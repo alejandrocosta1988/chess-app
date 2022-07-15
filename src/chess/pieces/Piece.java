@@ -7,14 +7,33 @@ package chess.pieces;
 public class Piece implements Comparable<Piece> {
 	
 	public enum Color { WHITE, BLACK };
-	public enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING, NO_PIECE };
+	public enum Type { 
+	
+		PAWN(1.0), 
+		KNIGHT(2.5), 
+		ROOK(5.0), 
+		BISHOP(3.0), 
+		QUEEN(9.0), 
+		KING(0.0), 
+		NO_PIECE(0.0);
+		
+		private double score;
+		
+		Type(double score) {
+			this.score = score;
+		}
+		
+		double getScore() {
+			return score;
+		}
+		
+	};
 	
 	private char printableRepresentation;
 
 	private Color color;
 	private Type type;
 	
-	private Score score = new ScoreImplementation();
 	private double strength;
 	
 	private Piece(Color color, Type type) {
@@ -142,11 +161,11 @@ public class Piece implements Comparable<Piece> {
 	}
 
 	public double getScore() {
-		return score.calculateScore(type);
+		return type.getScore();
 	}
 	
 	public double getHalfPawnScore() {
-		return score.calculateHalfPawnScore();
+		return type.getScore() / 2;
 	}
 	
 	public boolean isPawn() {

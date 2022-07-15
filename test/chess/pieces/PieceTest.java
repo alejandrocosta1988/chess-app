@@ -16,6 +16,7 @@ public class PieceTest extends junit.framework.TestCase {
 	private Piece whiteKing;
 	private Piece blank;
 	
+	@Override
 	public void setUp() {
 		blackPawn = Piece.createBlackPawn();
 		whitePawn = Piece.createWhitePawn();
