@@ -1,5 +1,7 @@
 package chess.pieces;
 
+import org.junit.Test;
+
 public class PieceTest extends junit.framework.TestCase {
 	
 	private Piece blackPawn;
@@ -33,6 +35,7 @@ public class PieceTest extends junit.framework.TestCase {
 		blank = Piece.noPiece();
 	}
 	
+	@Test
 	public void testEachPieceHasItsOwnPrintableRepresentation() {
 		assertEquals(" P ", blackPawn.getRepresentation());
 		assertEquals(" p ", whitePawn.getRepresentation());
@@ -49,6 +52,7 @@ public class PieceTest extends junit.framework.TestCase {
 		assertEquals(" . ", blank.getRepresentation());
 	}
 	
+	@Test
 	public void testPiecesCanBeBlackOrWhite() {
 		assertTrue(whiteKing.isWhite());
 		assertFalse(blackQueen.isWhite());
@@ -56,7 +60,8 @@ public class PieceTest extends junit.framework.TestCase {
 		assertTrue(blackQueen.isBlack());
 	}
 	
-	public void testPiecesType() {
+	@Test
+	public void testEachPieceHasAType() {
 		assertEquals(Piece.Type.PAWN, blackPawn.getType());
 		assertEquals(Piece.Type.ROOK, blackRook.getType());
 		assertEquals(Piece.Type.KNIGHT, blackKnight.getType());
@@ -66,10 +71,22 @@ public class PieceTest extends junit.framework.TestCase {
 		assertEquals(Piece.Type.NO_PIECE, blank.getType());
 	}
 	
+	@Test
 	public void testChecksIfAPieceIsBlankOrNot() {
 		assertTrue(blank.isBlank());
 		assertFalse(whitePawn.isBlank());
 		assertTrue(whitePawn.isNotBlank());
 		assertFalse(blank.isNotBlank());
 	}
+	
+	@Test
+	public void testEachPieceScoresDifferently() {
+		assertEquals(0d, whiteKing.getScore());
+		assertEquals(1d, blackPawn.getScore());
+		assertEquals(2.5, blackKnight.getScore());
+		assertEquals(3d, blackBishop.getScore());
+		assertEquals(5d, whiteRook.getScore());
+		assertEquals(9d, blackQueen.getScore());
+	}
+	
 }
