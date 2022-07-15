@@ -9,28 +9,32 @@ public class Piece implements Comparable<Piece> {
 	public enum Color { WHITE, BLACK };
 	public enum Type { 
 	
-		PAWN(1.0), 
-		KNIGHT(2.5), 
-		ROOK(5.0), 
-		BISHOP(3.0), 
-		QUEEN(9.0), 
-		KING(0.0), 
-		NO_PIECE(0.0);
+		PAWN(1.0, 'p'), 
+		KNIGHT(2.5, 'n'), 
+		ROOK(5.0, 'r'), 
+		BISHOP(3.0, 'b'), 
+		QUEEN(9.0, 'q'), 
+		KING(0.0, 'k'), 
+		NO_PIECE(0.0, '.');
 		
 		private double score;
+		private char printableRepresentation;
 		
-		Type(double score) {
+		Type(double score, char printableRepresentation) {
 			this.score = score;
+			this.printableRepresentation = printableRepresentation;
 		}
 		
 		double getScore() {
 			return score;
 		}
 		
+		String getPrintableRepresentation() {
+			return " " + printableRepresentation + " ";
+		}
+		
 	};
 	
-	private char printableRepresentation;
-
 	private Color color;
 	private Type type;
 	
@@ -39,49 +43,14 @@ public class Piece implements Comparable<Piece> {
 	private Piece(Color color, Type type) {
 		this.color = color;
 		this.type = type;
-		setPrintableRepresentation();
 	}
 	
 	private Piece() {
 		this.type = Type.NO_PIECE;
-		this.printableRepresentation = '.';
-	}
-	
-	private void setPrintableRepresentation() {
-		int stringIndex = defineIndex();
-		definePrintableRepresentation(stringIndex);
-	}
-	
-	private int defineIndex() {
-		int stringIndex = 0;
-		if (isKnight()) {
-			++stringIndex;
-		}
-		return stringIndex;
-	}
-	
-	private boolean isKnight() {
-		return type == Type.KNIGHT;
-	}
-	
-	private void definePrintableRepresentation(int stringIndex) {
-		if (this.isBlack()) {
-			representBlackPiece(stringIndex);
-			return;
-		}
-		representWhitePiece(stringIndex);
 	}
 	
 	public boolean isBlack() {
 		return color == Color.BLACK;
-	}
-	
-	private void representBlackPiece(int stringIndex) {
-		printableRepresentation = type.toString().toUpperCase().charAt(stringIndex);
-	}
-	
-	private void representWhitePiece(int stringIndex) {
-		printableRepresentation = type.toString().toLowerCase().charAt(stringIndex);
 	}
 	
 	public static Piece noPiece() {
@@ -145,7 +114,10 @@ public class Piece implements Comparable<Piece> {
 	}
 
 	public String getRepresentation() {
-		return " " + printableRepresentation + " ";
+		if (color == Color.BLACK) {
+			return type.getPrintableRepresentation().toUpperCase();
+		}
+		return type.getPrintableRepresentation();
 	}
 
 	public boolean isBlank() {
