@@ -55,4 +55,8 @@ public class Game {
 		return board.getPiece(location);
 	}
 
+	public void putPieceAt(Piece piece, String location) {
+		board.placePieceAt(location, piece);
+	}
+
 }

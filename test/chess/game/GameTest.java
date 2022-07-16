@@ -24,6 +24,12 @@ public class GameTest extends TestCase {
 	}
 	
 	@Test
+	public void testPiecesCanBeAddedToTheGameAtGivenLocations() {
+		game.putPieceAt(Piece.createBlackRook(), "d3");
+		assertTrue(game.getPieceAt("d3").getType() == Piece.Type.ROOK);
+	}
+	
+	@Test
 	public void testKingsAreAllowedToMoveASquareForwards() {
 		game.movePiece("d4", "d5");
 		assertTrue(game.getPieceAt("d5").getType() == Piece.Type.KING);
