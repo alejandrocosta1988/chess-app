@@ -41,7 +41,7 @@ public class Board {
 		board.set(0, setUpWhiteElitePieces());
 		setUpWhitePawns();
 		setUpBlackPawns();
-		board.set(7, createBlackElitePieces());
+		board.set(7, setUpBlackElitePieces());
 	}
 	
 	private ArrayList<Piece> setUpWhiteElitePieces() {
@@ -65,7 +65,7 @@ public class Board {
 		}
 	}
 	
-	private ArrayList<Piece> createBlackElitePieces() {
+	private ArrayList<Piece> setUpBlackElitePieces() {
 		return new ArrayList<Piece>(Arrays.asList(Piece.createBlackRook(), Piece.createBlackKnight(),
 				Piece.createBlackBishop(), Piece.createBlackQueen(), Piece.createBlackKing(),
 				Piece.createBlackBishop(), Piece.createBlackKnight(), Piece.createBlackRook()));
