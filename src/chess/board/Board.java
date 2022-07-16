@@ -15,7 +15,7 @@ import util.StringUtil;
  */
 public class Board {
 	
-	private ArrayList<ArrayList<Piece>> board = new ArrayList<>(8);
+	private List<List<Piece>> board = new ArrayList<>(8);
 	private List<Piece> whitePieces = new ArrayList<>();
 	private List<Piece> blackPieces = new ArrayList<>();
 	
@@ -52,14 +52,14 @@ public class Board {
 	}
 	
 	private void setUpWhitePawns() {
-		ArrayList<Piece> whitePawnsRank = getRank(1);
+		List<Piece> whitePawnsRank = getRank(1);
 		for (int file = 0; file < 8; file++) {
 			whitePawnsRank.set(file, Piece.createWhitePawn());
 		}
 	}
 	
 	private void setUpBlackPawns() {
-		ArrayList<Piece> blackPawnsRank = getRank(6);
+		List<Piece> blackPawnsRank = getRank(6);
 		for (int file = 0; file < 8; file++) {
 			blackPawnsRank.set(file, Piece.createBlackPawn());
 		}
@@ -73,7 +73,7 @@ public class Board {
 	
 	public int countPieces() {
 		int pieces = 0;
-		for (ArrayList<Piece> rank : board) {
+		for (List<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.isNotBlank()) {
 					pieces++;
@@ -89,7 +89,7 @@ public class Board {
 	
 	private int countPieces(Piece.Color color) {
 		int pieces = 0;
-		for (ArrayList<Piece> rank : board) {
+		for (List<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.getColor() == color) {
 					pieces++;
@@ -105,7 +105,7 @@ public class Board {
 	
 	public int countPieces(Piece.Type type, Piece.Color color) {
 		int pieces = 0;
-		for (ArrayList<Piece> rank : board) {
+		for (List<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.getType() == type && piece.getColor() == color) {
 					pieces++;
@@ -125,7 +125,7 @@ public class Board {
 		return buffer.toString();
 	}
 
-	public String printRank(ArrayList<Piece> rank) {
+	public String printRank(List<Piece> rank) {
 		StringBuilder buffer = new StringBuilder();
 		for (Piece piece : rank) {
 			buffer.append(piece.getRepresentation());
@@ -143,11 +143,11 @@ public class Board {
 		return Character.getNumericValue(location.charAt(1)) - correctionToConvertToIndex;
 	}
 	
-	private ArrayList<Piece> getRank(int rank) {
+	private List<Piece> getRank(int rank) {
 		return board.get(rank);
 	}
 	
-	private Piece getPieceInRank(ArrayList<Piece> rank, Character fileCharacter) {
+	private Piece getPieceInRank(List<Piece> rank, Character fileCharacter) {
 		return rank.get(fileCharacterToFileInt(fileCharacter));
 	}
 	
@@ -169,7 +169,7 @@ public class Board {
 
 	public double evaluateStrength(Color pieceColor) {
 		double score = 0d;
-		for (ArrayList<Piece> rank : board) {
+		for (List<Piece> rank : board) {
 			for (int file = 0; file < 8; file++) {
 				Piece piece = rank.get(file);
 				if (piece.isColor(pieceColor)) {
@@ -186,7 +186,7 @@ public class Board {
 	
 	private boolean isThereOtherPawnInSameFile(int file, Piece.Color pieceColor) {
 		List<Piece> pawnsInFile = new ArrayList<>();
-		for (ArrayList<Piece> rank : board) {
+		for (List<Piece> rank : board) {
 			Piece piece = rank.get(file);
 			if (piece.isColor(pieceColor) && piece.isPawn()) {
 				pawnsInFile.add(piece);
@@ -197,7 +197,7 @@ public class Board {
 
 	public void collectWhitePieces() {
 		assignStrengthToPieces();
-		for (ArrayList<Piece> rank : board) {
+		for (List<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.isWhite()) {
 					whitePieces.add(piece);
@@ -207,7 +207,7 @@ public class Board {
 	}
 	
 	public void assignStrengthToPieces() {
-		for (ArrayList<Piece> rank : board) {
+		for (List<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.isNotBlank()) {
 					piece.setStrength();
@@ -223,7 +223,7 @@ public class Board {
 
 	public void collectBlackPieces() {
 		assignStrengthToPieces();
-		for (ArrayList<Piece> rank : board) {
+		for (List<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.isBlack()) {
 					blackPieces.add(piece);
