@@ -78,4 +78,42 @@ public class GameTest extends TestCase {
 		assertTrue("Should be Piece.Type.No_Piece", game.getPieceAt("f4").getType() == Piece.Type.NO_PIECE);
 	}
 	
+	@Test
+	public void testQueensCanMoveAnyNumberOfSquaresForwardsInStraightLine() {
+		game.putPieceAt(Piece.createBlackQueen(), "b3");
+		game.movePiece("b3", "b8");
+		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("b8").getType() == Piece.Type.QUEEN);
+		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("b3").getType() == Piece.Type.NO_PIECE);
+	}
+	
+	@Test
+	public void testQueensCanMoveAnyNumberOfSquaresBackwardsInStraightLine() {
+		game.putPieceAt(Piece.createBlackQueen(), "e7");
+		game.movePiece("e7", "e1");
+		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("e1").getType() == Piece.Type.QUEEN);
+		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("e7").getType() == Piece.Type.NO_PIECE);
+	}
+	
+	@Test
+	public void testQueensAreNotAllowedToBreakStraigthLinesWhenMovingForwards() {
+		game.putPieceAt(Piece.createWhiteQueen(), "f1");
+		game.movePiece("f1", "g7");
+		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("f1").getType() == Piece.Type.QUEEN);
+		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("g7").getType() == Piece.Type.NO_PIECE);
+		game.movePiece("f1", "e7");
+		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("f1").getType() == Piece.Type.QUEEN);
+		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("e7").getType() == Piece.Type.NO_PIECE);
+	}
+	
+	@Test
+	public void testQueensCanMoveAnyNumberOfSquaresInDiagonalWhenMovingForwards() {
+		game.putPieceAt(Piece.createWhiteQueen(), "f1");
+		game.movePiece("f1", "d3");
+		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("d3").getType() == Piece.Type.QUEEN);
+		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("f1").getType() == Piece.Type.NO_PIECE);
+		game.movePiece("d3", "h7");
+		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("h7").getType() == Piece.Type.QUEEN);
+		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("d3").getType() == Piece.Type.NO_PIECE);
+	}
+	
 }
