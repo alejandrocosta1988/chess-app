@@ -8,11 +8,17 @@ import junit.framework.TestCase;
 
 public class GameTest extends TestCase {
 
+	private Board kingBoard;
+	
+	@Override
+	public void setUp() {
+		kingBoard = new Board();
+		kingBoard.placePieceAt("d4", Piece.createBlackKing());
+	}
+	
 	@Test
 	public void testCreateGame() {
-		Board board = new Board();
-		board.placePieceAt("d4", Piece.createWhiteKing());
-		Game game = new Game(board);
+		Game game = new Game(kingBoard);
 		assertNotNull("The board in game cannot be null", game.getBoard());
 	}
 	
