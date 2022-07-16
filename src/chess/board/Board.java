@@ -237,20 +237,4 @@ public class Board {
 		return blackPieces;
 	}
 
-	public void movePieceAtTo(String startLocation, String finalLocation) {
-		Piece pieceInMovement = getPiece(startLocation);
-		int initialRank = isolateRankNumberFromStringLocation(startLocation);
-		int finalRank = isolateRankNumberFromStringLocation(finalLocation);
-		int initialFile = fileCharacterToFileInt(startLocation.charAt(0)); 
-		int finalFile = fileCharacterToFileInt(finalLocation.charAt(0)); 
-		if (finalRank > initialRank + 1 || finalRank < initialRank - 1) {
-			return;
-		}
-		if (finalFile > initialFile + 1 || finalFile < initialFile - 1) {
-			return;
-		}
-		placePieceAt(finalLocation, pieceInMovement);
-		placePieceAt(startLocation, Piece.noPiece());
-	}
-	
 }
