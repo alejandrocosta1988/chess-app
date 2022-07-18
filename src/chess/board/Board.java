@@ -237,4 +237,11 @@ public class Board {
 		return blackPieces;
 	}
 
+	public boolean checkPosition(Piece piece, String location) {
+		if (getPiece(location) == piece) {
+			return true;
+		}
+		return false;
+	}
+
 }

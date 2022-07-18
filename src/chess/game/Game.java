@@ -19,45 +19,6 @@ public class Game {
 		return board;
 	}
 
-	public void movePiece(String currentLocation, String destinyLocation) {
-		Piece pieceInMovement = getPieceAt(currentLocation);
-		int initialRank = getRankIntFromStringLocation(currentLocation);
-		int finalRank = getRankIntFromStringLocation(destinyLocation);
-		int initialFile = getFileIntFromStringLocation(currentLocation); 
-		int finalFile = getFileIntFromStringLocation(destinyLocation);
-		
-		if (pieceInMovement.getType() == Piece.Type.KING) {
-			if (finalRank > initialRank + 1 || finalRank < initialRank - 1) {
-				return;
-			}
-			if (finalFile > initialFile + 1 || finalFile < initialFile - 1) {
-				return;
-			}
-		}
-		if (pieceInMovement.getType() == Piece.Type.QUEEN) {
-			if (finalRank > initialRank ) {
-				if (finalFile > initialFile) {
-					int difference = finalFile - initialFile;
-					for (int i = 0; i < difference; i++) {
-						finalFile--;
-						finalRank--;
-					}
-					if (finalFile != initialFile || finalRank != initialRank) return;
-				}
-				if (finalFile < initialFile) {
-					int difference = initialFile - finalFile;
-					for (int i = 0; i < difference; i++) {
-						finalFile++;
-						finalRank--;
-					}
-					if (finalFile != initialFile || finalRank != initialRank) return;
-				}
-			}
-		}
-		board.placePieceAt(destinyLocation, pieceInMovement);
-		board.placePieceAt(currentLocation, Piece.noPiece());
-	}
-	
 	public Piece getPieceAt(String location) {
 		return board.getPiece(location);
 	}
@@ -80,6 +41,9 @@ public class Game {
 
 	public void putPieceAt(Piece piece, String location) {
 		board.placePieceAt(location, piece);
+	}
+
+	public void movePieceFromTo(String fromLocation, String toLocation) {
 	}
 
 }

@@ -1,8 +1,13 @@
 package chess.pieces;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PieceTest extends junit.framework.TestCase {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class PieceTest {
 	
 	private Piece blackPawn;
 	private Piece whitePawn;
@@ -18,8 +23,8 @@ public class PieceTest extends junit.framework.TestCase {
 	private Piece whiteKing;
 	private Piece blank;
 	
-	@Override
-	public void setUp() {
+	@BeforeEach
+	public void createSetOfPieces() {
 		blackPawn = Piece.createBlackPawn();
 		whitePawn = Piece.createWhitePawn();
 		blackKnight = Piece.createBlackKnight();

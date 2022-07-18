@@ -142,4 +142,11 @@ public class BoardTest extends TestCase {
 		assertEquals(Piece.Type.ROOK, board.getBlackPieces().get(1).getType());
 	}
 	
+	@Test
+	public void testChecksPiecePosition() {
+		Piece piece = board.getPiece("c3");
+		assertTrue(board.checkPosition(piece, "c3"));
+		assertFalse(board.checkPosition(piece, "d3"));
+	}
+	
 }

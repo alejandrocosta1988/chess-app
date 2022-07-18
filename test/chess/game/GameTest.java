@@ -9,12 +9,14 @@ import junit.framework.TestCase;
 public class GameTest extends TestCase {
 
 	private Board kingBoard;
+	private Piece blackKing;
 	private Game game;
 	
 	@Override
 	public void setUp() {
 		kingBoard = new Board();
-		kingBoard.placePieceAt("d4", Piece.createBlackKing());
+		blackKing = Piece.createBlackKing();
+		kingBoard.placePieceAt("d4", blackKing);
 		game = new Game(kingBoard);
 	}
 	
@@ -29,91 +31,74 @@ public class GameTest extends TestCase {
 		assertTrue(game.getPieceAt("d3").getType() == Piece.Type.ROOK);
 	}
 	
-	@Test
-	public void testKingsAreAllowedToMoveASquareForwards() {
-		game.movePiece("d4", "d5");
-		assertTrue(game.getPieceAt("d5").getType() == Piece.Type.KING);
-		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCanMoveARankForwards() {
+//		game.movePieceFromTo("d4", "d5");
+////	assertTrue(game.checkPosition(blackKing, "d5"));
+//		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testKingsAreAllowedToMoveASquareBackwards() {
-		game.movePiece("d4", "d3");
-		assertTrue(game.getPieceAt("d3").getType() == Piece.Type.KING);
-		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCanMoveARankBackwards() {
+//		game.movePieceFromTo("d4", "d3");
+//		assertTrue(game.checkPosition(blackKing, "d3"));
+//		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testKingsAreAllowedToMoveAFileToTheLeft() {
-		game.movePiece("d4", "c4");
-		assertTrue("Should be Piece.Type.KING", game.getPieceAt("c4").getType() == Piece.Type.KING);
-		assertTrue("Should be Piece.Type.No_Piece", game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCanMoveAFileTowardsLeft() {
+//		game.movePieceFromTo("d4", "c4");
+//		assertTrue(game.checkPosition(blackKing, "c4"));
+//		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testKingsAreAllowedToMoveAFileToTheRight() {
-		game.movePiece("d4", "e4");
-		assertTrue("Should be Piece.Type.KING", game.getPieceAt("e4").getType() == Piece.Type.KING);
-		assertTrue("Should be Piece.Type.No_Piece", game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCanMoveAFileTowardsRight() {
+//		game.movePieceFromTo("d4", "e4");
+//		assertTrue(game.checkPosition(blackKing, "e4"));
+//		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testKingsAreAllowedToMoveAFileAndARankAtSameTime() {
-		game.movePiece("d4", "e5");
-		assertTrue("Should be Piece.Type.KING", game.getPieceAt("e5").getType() == Piece.Type.KING);
-		assertTrue("Should be Piece.Type.No_Piece", game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCanMoveARankAndAFileForwards() {
+//		game.movePieceFromTo("d4", "e5");
+//		assertTrue(game.checkPosition(blackKing, "e5"));
+//		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testKingsAreNotAllowedToMoveMoreThanARankPerTime() {
-		game.movePiece("d4", "d6");
-		assertTrue("Should be Piece.Type.KING", game.getPieceAt("d4").getType() == Piece.Type.KING);
-		assertTrue("Should be Piece.Type.No_Piece", game.getPieceAt("d6").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCanMoveARankAndAFileBackwards() {
+//		game.movePieceFromTo("d4", "c3");
+//		assertTrue(game.checkPosition(blackKing, "c3"));
+//		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testKingsAreNotAllowedToMoveMoreThanAFilePerTime() {
-		game.movePiece("d4", "f4");
-		assertTrue("Should be Piece.Type.KING", game.getPieceAt("d4").getType() == Piece.Type.KING);
-		assertTrue("Should be Piece.Type.No_Piece", game.getPieceAt("f4").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCanMoveARankForwardsAndAFileTowardsLeft() {
+//		game.movePieceFromTo("d4", "c5");
+//		assertTrue(game.checkPosition(blackKing, "c5"));
+//		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testQueensCanMoveAnyNumberOfSquaresForwardsInStraightLine() {
-		game.putPieceAt(Piece.createBlackQueen(), "b3");
-		game.movePiece("b3", "b8");
-		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("b8").getType() == Piece.Type.QUEEN);
-		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("b3").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCanMoveARankBackwardsAndAFileTowardsRight() {
+//		game.movePieceFromTo("d4", "e3");
+//		assertTrue(game.checkPosition(blackKing, "e3"));
+//		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testQueensCanMoveAnyNumberOfSquaresBackwardsInStraightLine() {
-		game.putPieceAt(Piece.createBlackQueen(), "e7");
-		game.movePiece("e7", "e1");
-		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("e1").getType() == Piece.Type.QUEEN);
-		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("e7").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCannotMoveMoreThanARankPerMove() {
+//		game.movePieceFromTo("d4", "d6");
+//		assertTrue(game.checkPosition(blackKing, "d4"));
+//		assertTrue(game.getPieceAt("d6").getType() == Piece.Type.NO_PIECE);
+//	}
 	
-	@Test
-	public void testQueensAreNotAllowedToBreakStraigthLinesWhenMovingForwards() {
-		game.putPieceAt(Piece.createWhiteQueen(), "f1");
-		game.movePiece("f1", "g7");
-		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("f1").getType() == Piece.Type.QUEEN);
-		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("g7").getType() == Piece.Type.NO_PIECE);
-		game.movePiece("f1", "e7");
-		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("f1").getType() == Piece.Type.QUEEN);
-		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("e7").getType() == Piece.Type.NO_PIECE);
-	}
-	
-	@Test
-	public void testQueensCanMoveAnyNumberOfSquaresInDiagonalWhenMovingForwards() {
-		game.putPieceAt(Piece.createWhiteQueen(), "f1");
-		game.movePiece("f1", "d3");
-		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("d3").getType() == Piece.Type.QUEEN);
-		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("f1").getType() == Piece.Type.NO_PIECE);
-		game.movePiece("d3", "h7");
-		assertTrue("Should be Piece.Type.QUEEN", game.getPieceAt("h7").getType() == Piece.Type.QUEEN);
-		assertTrue("Should be Piece.Type.NO_PIECE", game.getPieceAt("d3").getType() == Piece.Type.NO_PIECE);
-	}
+//	@Test
+//	public void testAKingCannotMoveMoreThanAFilePerMove() {
+//		game.movePieceFromTo("d4", "f4");
+//		assertTrue(game.checkPosition(blackKing, "d4"));
+//		assertTrue(game.getPieceAt("f4").getType() == Piece.Type.NO_PIECE);
+//	}
 	
 }

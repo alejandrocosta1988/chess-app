@@ -1,9 +1,5 @@
 package chess.pieces;
 
-/**
- * Represents a chess piece.
- * @author alejandro_costa
- */
 public class Piece implements Comparable<Piece> {
 	
 	public enum Color { WHITE, BLACK };
