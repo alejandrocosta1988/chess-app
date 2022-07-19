@@ -1,5 +1,9 @@
 package chess.pieces;
 
+import java.util.function.BooleanSupplier;
+
+import chess.moves.IntLocations;
+
 public class Piece implements Comparable<Piece> {
 	
 	public enum Color { WHITE, BLACK };
@@ -147,7 +151,7 @@ public class Piece implements Comparable<Piece> {
 		return strength;
 	}
 	
-	public boolean checkMove(int originFile, int originRank, int destinationFile, int destinationRank) {
+	public boolean checkMove(IntLocations locations) {
 		return false;
 	}
 
@@ -155,5 +159,5 @@ public class Piece implements Comparable<Piece> {
 	public int compareTo(Piece that) {
 		return Double.compare(that.getStrength(), this.getStrength());
 	}
-	
+
 }

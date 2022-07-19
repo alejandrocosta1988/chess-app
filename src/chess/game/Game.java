@@ -3,9 +3,9 @@ package chess.game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 import chess.board.Board;
+import chess.moves.IntLocations;
 import chess.pieces.Piece;
 
 public class Game {
@@ -46,10 +46,8 @@ public class Game {
 
 	public void movePieceFromTo(String fromLocation, String toLocation) {
 		Piece piece = board.getPiece(fromLocation);
-		if (piece.checkMove(getFileIntFromStringLocation(fromLocation),
-				getRankIntFromStringLocation(fromLocation), 
-				getFileIntFromStringLocation(toLocation), 
-				getRankIntFromStringLocation(toLocation))) {
+		IntLocations locations = new IntLocations(fromLocation, toLocation);
+		if (piece.checkMove(locations)) {
 			putPieceAt(piece, toLocation);
 			putPieceAt(Piece.noPiece(), fromLocation);
 		}

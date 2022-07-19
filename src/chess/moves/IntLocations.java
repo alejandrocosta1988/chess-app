@@ -12,6 +12,8 @@ public class IntLocations {
 	public IntLocations(String originLocation, String destinationLocation) {
 		originRank = LocationUtil.convertRankToInt(originLocation);
 		destinationRank = LocationUtil.convertRankToInt(destinationLocation);
+		originFile = LocationUtil.convertFileToInt(originLocation);
+		destinationFile = LocationUtil.convertFileToInt(destinationLocation);
 	}
 
 	public int getOriginRank() {
@@ -20,6 +22,14 @@ public class IntLocations {
 
 	public int getDestinationRank() {
 		return destinationRank;
+	}
+
+	public int getOriginFile() {
+		return originFile;
+	}
+	
+	public int getDestinationFile() {
+		return destinationFile;
 	}
 	
 }

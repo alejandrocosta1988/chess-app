@@ -5,8 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import chess.moves.IntLocations;
 
 class KingTest {
 
@@ -41,32 +42,38 @@ class KingTest {
 	
 	@Test
 	void testWhenAKingTriesToMoveMoreThanOneRankForwardsThenCheckMoveReturnsFalse() {
-		assertFalse(whiteKing.checkMove(4, 4, 4, 6));
+		IntLocations locations = new IntLocations("d3", "d5");
+		assertFalse(whiteKing.checkMove(locations));
 	}
 	
 	@Test
 	void testWhenAKingTriesToMoveMoreThanOneRankBackwardsThenCheckMoveReturnsFalse() {
-		assertFalse(whiteKing.checkMove(4, 4, 4, 2));
+		IntLocations locations = new IntLocations("d3", "d1");
+		assertFalse(whiteKing.checkMove(locations));
 	}
 	
 	@Test
 	void testWhenAKingTriesToMoveMoreThanOneFileTowardsRightThenCheckMoveReturnsFalse() {
-		assertFalse(whiteKing.checkMove(4, 4, 6, 4));
+		IntLocations locations = new IntLocations("d3", "f3");
+		assertFalse(whiteKing.checkMove(locations));
 	}
 	
 	@Test
 	void testWhenAKingTriesToMoveMoreThanOneFileTowardsLeftThenCheckMoveReturnsFalse() {
-		assertFalse(whiteKing.checkMove(4, 4, 2, 4));
+		IntLocations locations = new IntLocations("d3", "b3");
+		assertFalse(whiteKing.checkMove(locations));
 	}
 	
 	@Test
 	void testWhenAKingTriesToMoveOneFileFromOriginThenCheckMoveReturnsTrue() {
-		assertTrue(whiteKing.checkMove(4, 4, 5, 4));
+		IntLocations locations = new IntLocations("d3", "c3");
+		assertTrue(whiteKing.checkMove(locations));
 	}
 	
 	@Test
 	void testWhenAKingTriesToMoveOneRankFromOriginThenCheckMoveReturnsTrue() {
-		assertTrue(whiteKing.checkMove(4, 4, 4, 5));
+		IntLocations locations = new IntLocations("d3", "d4");
+		assertTrue(whiteKing.checkMove(locations));
 	}
 
 }

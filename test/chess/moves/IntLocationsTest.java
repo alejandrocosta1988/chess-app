@@ -21,5 +21,11 @@ class IntLocationsTest {
 		assertEquals(3, locations.getOriginRank());
 		assertEquals(5, locations.getDestinationRank());
 	}
+	
+	@Test
+	void testIntLocationsStoresFileIntCorrectedForBoardFileIndex() {
+		assertEquals(3, locations.getOriginFile());
+		assertEquals(3, locations.getDestinationFile());
+	}
 
 }

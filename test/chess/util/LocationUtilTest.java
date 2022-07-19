@@ -7,8 +7,13 @@ import org.junit.jupiter.api.Test;
 class LocationUtilTest {
 
 	@Test
-	void testGivenALocationStringThenConvertRankReturnsARankInt() {
+	void testGivenALocationStringThenConvertRankReturnsARankIntCorrectedToBoardIndexes() {
 		assertEquals(3, LocationUtil.convertRankToInt("d4"));
+	}
+	
+	@Test
+	void testGivenALocationStringThenConvertFileReturnsAFileIntCorrectedToBoardIndexes() {
+		assertEquals(3, LocationUtil.convertFileToInt("d4"));
 	}
 
 }

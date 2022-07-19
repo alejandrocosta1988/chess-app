@@ -1,5 +1,7 @@
 package chess.pieces;
 
+import chess.moves.IntLocations;
+
 public class King extends Piece {
 
 	private double score = 0;
@@ -36,19 +38,21 @@ public class King extends Piece {
 		return " " + printableRepresentation + " ";
 	}
 	
-	public boolean checkMove(int originFile, int originRank, int destinationFile, int destinationRank) {
-		if (checkFilesInMove(originFile, destinationFile) || checkRanksInMove(originRank, destinationRank)) {
+	public boolean checkMove(IntLocations locations) {
+		if (checkFilesInMove(locations) || checkRanksInMove(locations)) {
 			return false;
 		}
 		return true;
 	}
 	
-	private boolean checkFilesInMove(int originFile, int destinationFile) {
-		return destinationFile > originFile + 1 || destinationFile < originFile - 1;
+	private boolean checkFilesInMove(IntLocations locations) {
+		return locations.getDestinationFile() > locations.getOriginFile() + 1 || 
+				locations.getDestinationFile() < locations.getOriginFile() - 1;
 	}
 	
-	private boolean checkRanksInMove(int originRank, int destinationRank) {
-		return destinationRank > originRank + 1 || destinationRank < originRank - 1;
+	private boolean checkRanksInMove(IntLocations locations) {
+		return locations.getDestinationRank() > locations.getOriginRank() + 1 || 
+				locations.getDestinationRank() < locations.getOriginRank() - 1;
 	}
 	
 }
