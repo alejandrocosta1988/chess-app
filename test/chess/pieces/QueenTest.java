@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class QueenTest {
+class QueenTest extends PieceTest {
 
 	private Piece blackQueen;
 	private Piece whiteQueen;
@@ -18,14 +18,14 @@ class QueenTest {
 		whiteQueen = Queen.createWhiteQueen();
 	}
 	
-	@Test
-	void testGivenABlackQueenGetColorReturnsBlackColor() {
-		assertTrue(blackQueen.getColor() == Piece.Color.BLACK);
+	@Override
+	Piece createBlackPiece() {
+		return Queen.createBlackQueen();
 	}
-	
-	@Test
-	void testGivenAWhiteQueenGetColorReturnsWhiteColor() {
-		assertTrue(whiteQueen.getColor() == Piece.Color.WHITE);
+
+	@Override
+	Piece createWhitePiece() {
+		return Queen.createWhiteQueen();
 	}
 	
 	@Test
@@ -49,7 +49,7 @@ class QueenTest {
 	}
 	
 	@Test
-	void testABlackQueenShouldBeRepresentedWithAUpperCaseQBetweenSpaces() {
+	void testABlackQueenShouldBeRepresentedWithAnUpperCaseQBetweenSpaces() {
 		assertEquals(" Q ", blackQueen.getRepresentation());
 	}
 	
@@ -62,5 +62,9 @@ class QueenTest {
 	void testAQueenScoresNine() {
 		assertEquals(9d, whiteQueen.getScore());
 	}
+
+	
+
+	
 	
 }

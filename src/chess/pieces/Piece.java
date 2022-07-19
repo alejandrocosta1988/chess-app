@@ -2,15 +2,13 @@ package chess.pieces;
 
 import chess.moves.IntLocations;
 
-public class Piece implements Comparable<Piece> {
+public abstract class Piece implements Comparable<Piece> {
 	
 	public enum Color { WHITE, BLACK };
 	public enum Type { 
 	
 		PAWN(1.0, 'p'), 
-		KNIGHT(2.5, 'n'), 
 		ROOK(5.0, 'r'), 
-		BISHOP(3.0, 'b'), 
 		NO_PIECE(0.0, '.');
 		
 		private double score;
@@ -65,28 +63,12 @@ public class Piece implements Comparable<Piece> {
 		return new Piece(Color.BLACK, Type.PAWN);
 	}
 	
-	public static Piece createWhiteKnight() {
-		return new Piece(Color.WHITE, Type.KNIGHT);
-	}
-	
-	public static Piece createBlackKnight() {
-		return new Piece(Color.BLACK, Type.KNIGHT);
-	}
-	
 	public static Piece createWhiteRook() {
 		return new Piece(Color.WHITE, Type.ROOK);
 	}
 	
 	public static Piece createBlackRook() {
 		return new Piece(Color.BLACK, Type.ROOK);
-	}
-	
-	public static Piece createWhiteBishop() {
-		return new Piece(Color.WHITE, Type.BISHOP);
-	}
-	
-	public static Piece createBlackBishop() {
-		return new Piece(Color.BLACK, Type.BISHOP);
 	}
 	
 	public boolean isWhite() {

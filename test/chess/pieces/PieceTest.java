@@ -7,62 +7,28 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class PieceTest {
+public abstract class PieceTest {
 	
-	private Piece blackPawn;
-	private Piece whitePawn;
-	private Piece blackKnight;
-	private Piece whiteKnight;
-	private Piece blackRook;
-	private Piece whiteRook;
-	private Piece blackBishop;
-	private Piece whiteBishop;
-	private Piece blackQueen;
-	private Piece whiteQueen;
-	private Piece blackKing;
-	private Piece whiteKing;
-	private Piece blank;
+	private Piece blackPiece;
+	private Piece whitePiece;
 	
 	@BeforeEach
 	public void createSetOfPieces() {
-		blackPawn = Piece.createBlackPawn();
-		whitePawn = Piece.createWhitePawn();
-		blackKnight = Piece.createBlackKnight();
-		whiteKnight = Piece.createWhiteKnight();
-		blackRook = Piece.createBlackRook();
-		whiteRook = Piece.createWhiteRook();
-		blackBishop = Piece.createBlackBishop();
-		whiteBishop = Piece.createWhiteBishop();
-		blackQueen = Queen.createBlackQueen();
-		whiteQueen = Queen.createWhiteQueen();
-//		blackKing = Piece.createBlackKing();
-//		whiteKing = Piece.createWhiteKing();
-		blank = Piece.noPiece();
+		blackPiece = createBlackPiece();
+		whitePiece = createWhitePiece();
+	}
+	
+	abstract Piece createBlackPiece();
+	abstract Piece createWhitePiece();
+	
+	@Test
+	public void testGivenABlackPieceGetColorReturnsBlackColor() {
+		assertEquals(Piece.Color.BLACK, blackPiece.getColor());
 	}
 	
 	@Test
-	public void testEachPieceHasItsOwnPrintableRepresentation() {
-		assertEquals(" P ", blackPawn.getRepresentation());
-		assertEquals(" p ", whitePawn.getRepresentation());
-		assertEquals(" N ", blackKnight.getRepresentation());
-		assertEquals(" n ", whiteKnight.getRepresentation());
-		assertEquals(" R ", blackRook.getRepresentation());
-		assertEquals(" r ", whiteRook.getRepresentation());
-		assertEquals(" B ", blackBishop.getRepresentation());
-		assertEquals(" b ", whiteBishop.getRepresentation());
-//		assertEquals(" Q ", blackQueen.getRepresentation());
-//		assertEquals(" q ", whiteQueen.getRepresentation());
-//		assertEquals(" K ", blackKing.getRepresentation());
-//		assertEquals(" k ", whiteKing.getRepresentation());
-		assertEquals(" . ", blank.getRepresentation());
-	}
-	
-	@Test
-	public void testPiecesCanBeBlackOrWhite() {
-//		assertTrue(whiteKing.isWhite());
-		assertFalse(blackQueen.isWhite());
-//		assertFalse(whiteKing.isBlack());
-		assertTrue(blackQueen.isBlack());
+	public void testGivenAWhitePieceGetColorReturnsWhiteColor() {
+		assertEquals(Piece.Color.WHITE, whitePiece.getColor());
 	}
 	
 	@Test
