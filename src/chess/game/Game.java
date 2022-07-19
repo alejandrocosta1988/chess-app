@@ -46,8 +46,14 @@ public class Game {
 
 	public void movePieceFromTo(String fromLocation, String toLocation) {
 		Piece piece = board.getPiece(fromLocation);
-		putPieceAt(piece, toLocation);
-		putPieceAt(Piece.noPiece(), fromLocation);
+		if (piece.checkMove(getFileIntFromStringLocation(fromLocation),
+				getRankIntFromStringLocation(fromLocation), 
+				getFileIntFromStringLocation(toLocation), 
+				getRankIntFromStringLocation(toLocation))) {
+			putPieceAt(piece, toLocation);
+			putPieceAt(Piece.noPiece(), fromLocation);
+		}
+		return;
 	}
 
 	public boolean checkPosition(Piece piece, String location) {

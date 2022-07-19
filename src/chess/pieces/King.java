@@ -37,7 +37,18 @@ public class King extends Piece {
 	}
 	
 	public boolean checkMove(int originFile, int originRank, int destinationFile, int destinationRank) {
-		return false;
+		if (checkFilesInMove(originFile, destinationFile) || checkRanksInMove(originRank, destinationRank)) {
+			return false;
+		}
+		return true;
 	}
-
+	
+	private boolean checkFilesInMove(int originFile, int destinationFile) {
+		return destinationFile > originFile + 1 || destinationFile < originFile - 1;
+	}
+	
+	private boolean checkRanksInMove(int originRank, int destinationRank) {
+		return destinationRank > originRank + 1 || destinationRank < originRank - 1;
+	}
+	
 }

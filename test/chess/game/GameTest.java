@@ -92,7 +92,6 @@ public class GameTest {
 		assertTrue(game.getPieceAt("d4").getType() == Piece.Type.NO_PIECE);
 	}
 	
-	@Disabled
 	@Test
 	public void testAKingCannotMoveMoreThanARankPerMove() {
 		game.movePieceFromTo("d4", "d6");
@@ -100,7 +99,6 @@ public class GameTest {
 		assertTrue(game.getPieceAt("d6").getType() == Piece.Type.NO_PIECE);
 	}
 	
-	@Disabled
 	@Test
 	public void testAKingCannotMoveMoreThanAFilePerMove() {
 		game.movePieceFromTo("d4", "f4");
