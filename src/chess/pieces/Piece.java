@@ -10,7 +10,6 @@ public class Piece implements Comparable<Piece> {
 		ROOK(5.0, 'r'), 
 		BISHOP(3.0, 'b'), 
 		QUEEN(9.0, 'q'), 
-		KING(0.0, 'k'), 
 		NO_PIECE(0.0, '.');
 		
 		private double score;
@@ -36,12 +35,16 @@ public class Piece implements Comparable<Piece> {
 	
 	private double strength;
 	
-	private Piece(Color color, Type type) {
+	protected Piece(Color color, Type type) {
 		this.color = color;
 		this.type = type;
 	}
 	
-	private Piece() {
+	protected Piece(Color color) {
+		this.color = color;
+	}
+	
+	protected Piece() {
 		this.type = Type.NO_PIECE;
 	}
 	
@@ -91,14 +94,6 @@ public class Piece implements Comparable<Piece> {
 	
 	public static Piece createBlackQueen() {
 		return new Piece(Color.BLACK, Type.QUEEN);
-	}
-	
-	public static Piece createWhiteKing() {
-		return new Piece(Color.WHITE, Type.KING);
-	}
-	
-	public static Piece createBlackKing() {
-		return new Piece(Color.BLACK, Type.KING);
 	}
 	
 	public boolean isWhite() {

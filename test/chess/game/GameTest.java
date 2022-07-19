@@ -1,28 +1,32 @@
 package chess.game;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import chess.board.Board;
+import chess.pieces.King;
 import chess.pieces.Piece;
-import junit.framework.TestCase;
 
-public class GameTest extends TestCase {
+public class GameTest {
 
 	private Board kingBoard;
 	private Piece blackKing;
 	private Game game;
 	
-	@Override
+	@BeforeEach
 	public void setUp() {
 		kingBoard = new Board();
-		blackKing = Piece.createBlackKing();
+		blackKing = King.createBlackKing();
 		kingBoard.placePieceAt("d4", blackKing);
 		game = new Game(kingBoard);
 	}
 	
 	@Test
 	public void testCreateGame() {
-		assertNotNull("The board in game cannot be null", game.getBoard());
+		assertNotNull(game.getBoard(), "The board in game cannot be null");
 	}
 	
 	@Test
