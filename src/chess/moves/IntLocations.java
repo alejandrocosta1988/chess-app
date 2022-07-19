@@ -1,5 +1,7 @@
 package chess.moves;
 
+import chess.util.LocationUtil;
+
 public class IntLocations {
 
 	private int originRank;
@@ -7,7 +9,17 @@ public class IntLocations {
 	private int originFile;
 	private int destinationFile;
 	
-	public IntLocations(String string, String string2) {
+	public IntLocations(String originLocation, String destinationLocation) {
+		originRank = LocationUtil.convertRankToInt(originLocation);
+		destinationRank = LocationUtil.convertRankToInt(destinationLocation);
 	}
 
+	public int getOriginRank() {
+		return originRank;
+	}
+
+	public int getDestinationRank() {
+		return destinationRank;
+	}
+	
 }

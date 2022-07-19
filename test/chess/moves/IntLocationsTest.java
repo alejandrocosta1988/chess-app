@@ -1,14 +1,25 @@
 package chess.moves;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class IntLocationsTest {
 
+	private String origin = "d4";
+	private String destination = "d6";
+	private IntLocations locations;
+	
+	@BeforeEach
+	void createIntLocations() {
+		locations = new IntLocations(origin, destination);
+	}
+	
 	@Test
-	void testCreate() {
-		IntLocations locations = new IntLocations("d4", "d6");
+	void testIntLocationsStoresRankIntCorrectedForBoardRankIndex() {
+		assertEquals(3, locations.getOriginRank());
+		assertEquals(5, locations.getDestinationRank());
 	}
 
 }
