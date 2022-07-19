@@ -41,6 +41,11 @@ class KingTest {
 	}
 	
 	@Test
+	void testAKingScoresZero() {
+		assertEquals(0d, whiteKing.getScore());
+	}
+	
+	@Test
 	void testWhenAKingTriesToMoveMoreThanOneRankForwardsThenCheckMoveReturnsFalse() {
 		IntLocations locations = new IntLocations("d3", "d5");
 		assertFalse(whiteKing.checkMove(locations));
@@ -75,5 +80,7 @@ class KingTest {
 		IntLocations locations = new IntLocations("d3", "d4");
 		assertTrue(whiteKing.checkMove(locations));
 	}
+	
+	
 
 }

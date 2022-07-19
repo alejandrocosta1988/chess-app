@@ -1,5 +1,6 @@
 package chess.pieces;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -46,5 +47,20 @@ class QueenTest {
 	void testGivenAWhiteQueenIsBlackReturnsFalse() {
 		assertFalse(whiteQueen.isBlack());
 	}
-
+	
+	@Test
+	void testABlackQueenShouldBeRepresentedWithAUpperCaseQBetweenSpaces() {
+		assertEquals(" Q ", blackQueen.getRepresentation());
+	}
+	
+	@Test
+	void testAWhiteQueenShouldBeRepresentedWithALowerCaseQBetweenSpaces() {
+		assertEquals(" q ", whiteQueen.getRepresentation());
+	}
+	
+	@Test
+	void testAQueenScoresNine() {
+		assertEquals(9d, whiteQueen.getScore());
+	}
+	
 }

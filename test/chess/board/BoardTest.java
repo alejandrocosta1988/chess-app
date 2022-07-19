@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import chess.pieces.King;
 import chess.pieces.Piece;
+import chess.pieces.Queen;
 import chess.util.StringUtil;
 
 public class BoardTest {
@@ -111,7 +112,7 @@ public class BoardTest {
 		strengthBoard.placePieceAt("c7", Piece.createBlackPawn());
 		strengthBoard.placePieceAt("d7", Piece.createBlackBishop());
 		strengthBoard.placePieceAt("b6", Piece.createBlackPawn());
-		strengthBoard.placePieceAt("e6", Piece.createBlackQueen());
+		strengthBoard.placePieceAt("e6", Queen.createBlackQueen());
 		assertEquals(20d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
 		
 		strengthBoard.placePieceAt("e1", Piece.createWhiteRook());
@@ -120,7 +121,7 @@ public class BoardTest {
 		strengthBoard.placePieceAt("g2", Piece.createWhitePawn());
 		strengthBoard.placePieceAt("h3", Piece.createWhitePawn());
 		strengthBoard.placePieceAt("f4", Piece.createWhiteKnight());
-		strengthBoard.placePieceAt("g4", Piece.createWhiteQueen());
+		strengthBoard.placePieceAt("g4", Queen.createWhiteQueen());
 		assertEquals(19.5, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 	}
 	
@@ -147,10 +148,10 @@ public class BoardTest {
 	@Test
 	public void testWhiteOrBlackPiecesAreGatheredInACollectionSortedAccordingToTheirStrength() {
 		board.collectWhitePieces();
-		assertEquals(Piece.Type.QUEEN, board.getWhitePieces().get(0).getType());
+		assertEquals(Queen.class, board.getWhitePieces().get(0).getClass());
 		assertEquals(Piece.Type.ROOK, board.getWhitePieces().get(1).getType());
 		board.collectBlackPieces();
-		assertEquals(Piece.Type.QUEEN, board.getBlackPieces().get(0).getType());
+		assertEquals(Queen.class, board.getBlackPieces().get(0).getClass());
 		assertEquals(Piece.Type.ROOK, board.getBlackPieces().get(1).getType());
 	}
 	

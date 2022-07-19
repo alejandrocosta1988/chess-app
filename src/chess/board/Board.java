@@ -8,6 +8,7 @@ import java.util.List;
 import chess.pieces.King;
 import chess.pieces.Piece;
 import chess.pieces.Piece.Color;
+import chess.pieces.Queen;
 import chess.util.StringUtil;
 
 /**
@@ -48,7 +49,7 @@ public class Board {
 	private ArrayList<Piece> setUpWhiteElitePieces() {
 		return new ArrayList<Piece>(Arrays.asList(
 				Piece.createWhiteRook(), Piece.createWhiteKnight(),
-				Piece.createWhiteBishop(), Piece.createWhiteQueen(), King.createWhiteKing(),
+				Piece.createWhiteBishop(), Queen.createWhiteQueen(), King.createWhiteKing(),
 				Piece.createWhiteBishop(), Piece.createWhiteKnight(), Piece.createWhiteRook()));
 	}
 	
@@ -68,7 +69,7 @@ public class Board {
 	
 	private ArrayList<Piece> setUpBlackElitePieces() {
 		return new ArrayList<Piece>(Arrays.asList(Piece.createBlackRook(), Piece.createBlackKnight(),
-				Piece.createBlackBishop(), Piece.createBlackQueen(), King.createBlackKing(),
+				Piece.createBlackBishop(), Queen.createBlackQueen(), King.createBlackKing(),
 				Piece.createBlackBishop(), Piece.createBlackKnight(), Piece.createBlackRook()));
 	}
 	

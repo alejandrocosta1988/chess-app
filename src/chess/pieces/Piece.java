@@ -1,7 +1,5 @@
 package chess.pieces;
 
-import java.util.function.BooleanSupplier;
-
 import chess.moves.IntLocations;
 
 public class Piece implements Comparable<Piece> {
@@ -13,7 +11,6 @@ public class Piece implements Comparable<Piece> {
 		KNIGHT(2.5, 'n'), 
 		ROOK(5.0, 'r'), 
 		BISHOP(3.0, 'b'), 
-		QUEEN(9.0, 'q'), 
 		NO_PIECE(0.0, '.');
 		
 		private double score;
@@ -90,14 +87,6 @@ public class Piece implements Comparable<Piece> {
 	
 	public static Piece createBlackBishop() {
 		return new Piece(Color.BLACK, Type.BISHOP);
-	}
-	
-	public static Piece createWhiteQueen() {
-		return new Piece(Color.WHITE, Type.QUEEN);
-	}
-	
-	public static Piece createBlackQueen() {
-		return new Piece(Color.BLACK, Type.QUEEN);
 	}
 	
 	public boolean isWhite() {
