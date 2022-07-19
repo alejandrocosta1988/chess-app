@@ -35,5 +35,9 @@ public class King extends Piece {
 	private String representWhiteKing() {
 		return " " + printableRepresentation + " ";
 	}
+	
+	public boolean checkMove(int originFile, int originRank, int destinationFile, int destinationRank) {
+		return false;
+	}
 
 }

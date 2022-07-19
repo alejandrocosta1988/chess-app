@@ -146,6 +146,10 @@ public class Piece implements Comparable<Piece> {
 	public double getStrength() {
 		return strength;
 	}
+	
+	public boolean checkMove(int originFile, int originRank, int destinationFile, int destinationRank) {
+		return false;
+	}
 
 	@Override
 	public int compareTo(Piece that) {

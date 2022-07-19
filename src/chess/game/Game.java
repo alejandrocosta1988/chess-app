@@ -3,6 +3,7 @@ package chess.game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BooleanSupplier;
 
 import chess.board.Board;
 import chess.pieces.Piece;
@@ -44,6 +45,13 @@ public class Game {
 	}
 
 	public void movePieceFromTo(String fromLocation, String toLocation) {
+		Piece piece = board.getPiece(fromLocation);
+		putPieceAt(piece, toLocation);
+		putPieceAt(Piece.noPiece(), fromLocation);
+	}
+
+	public boolean checkPosition(Piece piece, String location) {
+		return board.getPiece(location) == piece;
 	}
 
 }
