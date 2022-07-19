@@ -8,7 +8,7 @@ import java.util.List;
 import chess.pieces.King;
 import chess.pieces.Piece;
 import chess.pieces.Piece.Color;
-import util.StringUtil;
+import chess.util.StringUtil;
 
 /**
  * Represents a chess board.

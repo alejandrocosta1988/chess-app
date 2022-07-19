@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import chess.pieces.King;
 import chess.pieces.Piece;
-import util.StringUtil;
+import chess.util.StringUtil;
 
 public class BoardTest {
 
