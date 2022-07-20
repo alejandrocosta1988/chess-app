@@ -2,6 +2,7 @@ package chess.game;
 
 import chess.board.Board;
 import chess.moves.IntLocations;
+import chess.pieces.NoPiece;
 import chess.pieces.Piece;
 
 public class Game {
@@ -29,7 +30,7 @@ public class Game {
 		IntLocations locations = new IntLocations(fromLocation, toLocation);
 		if (piece.checkMove(locations)) {
 			putPieceAt(piece, toLocation);
-			putPieceAt(Piece.noPiece(), fromLocation);
+			putPieceAt(NoPiece.noPiece(), fromLocation);
 		}
 		return;
 	}
