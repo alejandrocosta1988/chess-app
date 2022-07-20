@@ -8,14 +8,6 @@ public class Queen extends Piece {
 		setPrintableRepresentation('q');
 	}
 	
-	private void setScore(double score) {
-		this.score = score;
-	}
-	
-	private void setPrintableRepresentation(char representation) {
-		printableRepresentation = representation;
-	}
-	
 	public static Piece createBlackQueen() {
 		return new Queen(Piece.Color.BLACK);
 	}

@@ -10,14 +10,6 @@ public class King extends Piece {
 		setPrintableRepresentation('k');
 	}
 	
-	private void setScore(double score) {
-		this.score = score;
-	}
-	
-	private void setPrintableRepresentation(char representation) {
-		printableRepresentation = representation;
-	}
-	
 	public static Piece createBlackKing() {
 		return new King(Piece.Color.BLACK);
 	}

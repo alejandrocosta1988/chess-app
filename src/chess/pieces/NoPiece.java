@@ -2,11 +2,10 @@ package chess.pieces;
 
 public class NoPiece extends Piece {
 
-	private char printableRepresentation = '.';
-	private double score = 0d;
-	
 	private NoPiece() {
 		super();
+		setScore(0d);
+		setPrintableRepresentation('.');
 	}
 	
 	public static Piece noPiece() {

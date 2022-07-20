@@ -16,12 +16,4 @@ public class Bishop extends Piece {
 		return new Bishop(Piece.Color.WHITE);
 	}
 	
-	private void setPrintableRepresentation(char representation) {
-		printableRepresentation = representation;
-	}
-	
-	private void setScore(double score) {
-		this.score = score;
-	}
-
 }

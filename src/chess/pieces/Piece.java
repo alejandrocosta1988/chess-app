@@ -17,6 +17,10 @@ public abstract class Piece implements Comparable<Piece> {
 		this.color = color;
 	}
 	
+	protected void setPrintableRepresentation(char representation) {
+		printableRepresentation = representation;
+	}
+	
 	public String getRepresentation() {
 		if (isBlack()) {
 			return representBlackPiece();
@@ -54,6 +58,10 @@ public abstract class Piece implements Comparable<Piece> {
 
 	public double getScore() {
 		return score;
+	}
+	
+	protected void setScore(double score) {
+		this.score = score;
 	}
 	
 	public boolean isPawn() {
