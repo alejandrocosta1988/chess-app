@@ -5,15 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import chess.pieces.Bishop;
 import chess.pieces.King;
+import chess.pieces.Knight;
+import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import chess.pieces.Queen;
+import chess.pieces.Rook;
 import chess.util.StringUtil;
 
-@Disabled
 public class BoardTest {
 
 	final String EMPTY_RANK = " . ".repeat(8);
@@ -75,7 +77,7 @@ public class BoardTest {
 	public void testPiecesCanBePlacedAtGivenLocationsOnABoard() {
 		Board emptyBoard = new Board();
 		Piece blackKing = King.createBlackKing();
-		Piece blackRook = Piece.createBlackRook();
+		Piece blackRook = Rook.createBlackRook();
 		Piece whiteKing = King.createWhiteKing();
 		emptyBoard.placePieceAt("b6", blackKing);
 		emptyBoard.placePieceAt("b5", blackRook);
@@ -92,14 +94,8 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void testCountsSpecificTypesOfPiecesTakingIntoAccountItsColor() {
-		assertEquals(8, board.countPieces(Piece.Type.PAWN, Piece.Color.BLACK));
-		assertEquals(2, board.countPieces(Piece.Type.BISHOP, Piece.Color.WHITE));
-	}
-	
-	@Test
 	public void testRetrieveAPieceByAGivenLocation() {
-		Piece blackRook = Piece.createBlackRook();
+		Piece blackRook = Rook.createBlackRook();
 		Piece whiteKing = King.createWhiteKing();
 		assertEquals(blackRook.getRepresentation(), board.getPiece("a8").getRepresentation());
 		assertEquals(whiteKing.getRepresentation(), board.getPiece("e1").getRepresentation());
@@ -109,20 +105,20 @@ public class BoardTest {
 	public void testEvaluateTheStrengthOfWhiteAndBlackPieces() {
 		Board strengthBoard = new Board();
 		strengthBoard.placePieceAt("b8", King.createBlackKing());
-		strengthBoard.placePieceAt("c8", Piece.createBlackRook());
-		strengthBoard.placePieceAt("a7", Piece.createBlackPawn());
-		strengthBoard.placePieceAt("c7", Piece.createBlackPawn());
-		strengthBoard.placePieceAt("d7", Piece.createBlackBishop());
-		strengthBoard.placePieceAt("b6", Piece.createBlackPawn());
+		strengthBoard.placePieceAt("c8", Rook.createBlackRook());
+		strengthBoard.placePieceAt("a7", Pawn.createBlackPawn());
+		strengthBoard.placePieceAt("c7", Pawn.createBlackPawn());
+		strengthBoard.placePieceAt("d7", Bishop.createBlackBishop());
+		strengthBoard.placePieceAt("b6", Pawn.createBlackPawn());
 		strengthBoard.placePieceAt("e6", Queen.createBlackQueen());
 		assertEquals(20d, strengthBoard.evaluateStrength(Piece.Color.BLACK));
 		
-		strengthBoard.placePieceAt("e1", Piece.createWhiteRook());
+		strengthBoard.placePieceAt("e1", Rook.createWhiteRook());
 		strengthBoard.placePieceAt("f1", King.createWhiteKing());
-		strengthBoard.placePieceAt("f2", Piece.createWhitePawn());
-		strengthBoard.placePieceAt("g2", Piece.createWhitePawn());
-		strengthBoard.placePieceAt("h3", Piece.createWhitePawn());
-		strengthBoard.placePieceAt("f4", Piece.createWhiteKnight());
+		strengthBoard.placePieceAt("f2", Pawn.createWhitePawn());
+		strengthBoard.placePieceAt("g2", Pawn.createWhitePawn());
+		strengthBoard.placePieceAt("h3", Pawn.createWhitePawn());
+		strengthBoard.placePieceAt("f4", Knight.createWhiteKnight());
 		strengthBoard.placePieceAt("g4", Queen.createWhiteQueen());
 		assertEquals(19.5, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 	}
@@ -131,30 +127,29 @@ public class BoardTest {
 	public void testPawnsGetHalfScoreIfThereAreMoreThanOneInTheSameFile() {
 		Board strengthBoard = new Board();
 		strengthBoard.placePieceAt("c8", King.createBlackKing());
-		strengthBoard.placePieceAt("d8", Piece.createBlackRook());
-		strengthBoard.placePieceAt("f2", Piece.createWhitePawn());
-		strengthBoard.placePieceAt("f4", Piece.createWhitePawn());
-		strengthBoard.placePieceAt("d4", Piece.createWhitePawn());
+		strengthBoard.placePieceAt("d8", Rook.createBlackRook());
+		strengthBoard.placePieceAt("f2", Pawn.createWhitePawn());
+		strengthBoard.placePieceAt("f4", Pawn.createWhitePawn());
+		strengthBoard.placePieceAt("d4", Pawn.createWhitePawn());
 		strengthBoard.placePieceAt("e2", King.createWhiteKing());
 		assertEquals(2d, strengthBoard.evaluateStrength(Piece.Color.WHITE));
 	}
 	
 	@Test
 	public void testAssignEachPieceAStrength() {
-		board.assignStrengthToPieces();
-		assertEquals(5.0, board.getPiece("a8").getStrength());
-		assertEquals(9.0, board.getPiece("d1").getStrength());
-		assertEquals(1.0, board.getPiece("d2").getStrength());
+		assertEquals(5.0, board.getPiece("a8").getScore());
+		assertEquals(9.0, board.getPiece("d1").getScore());
+		assertEquals(1.0, board.getPiece("d2").getScore());
 	}
 	
 	@Test
 	public void testWhiteOrBlackPiecesAreGatheredInACollectionSortedAccordingToTheirStrength() {
 		board.collectWhitePieces();
 		assertEquals(Queen.class, board.getWhitePieces().get(0).getClass());
-		assertEquals(Piece.Type.ROOK, board.getWhitePieces().get(1).getType());
+		assertEquals(Rook.class, board.getWhitePieces().get(1).getClass());
 		board.collectBlackPieces();
 		assertEquals(Queen.class, board.getBlackPieces().get(0).getClass());
-		assertEquals(Piece.Type.ROOK, board.getBlackPieces().get(1).getType());
+		assertEquals(Rook.class, board.getBlackPieces().get(1).getClass());
 	}
 	
 	@Test

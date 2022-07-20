@@ -5,10 +5,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import chess.pieces.Bishop;
 import chess.pieces.King;
+import chess.pieces.Knight;
+import chess.pieces.NoPiece;
+import chess.pieces.Pawn;
 import chess.pieces.Piece;
 import chess.pieces.Piece.Color;
 import chess.pieces.Queen;
+import chess.pieces.Rook;
 import chess.util.StringUtil;
 
 /**
@@ -34,7 +39,7 @@ public class Board {
 	private ArrayList<Piece> generateEmptyRank() {
 		ArrayList<Piece> emptyRank = new ArrayList<>(8);
 		for (int file = 0; file < 8; file++) {
-			emptyRank.add(Piece.noPiece());
+			emptyRank.add(NoPiece.noPiece());
 		}
 		return emptyRank;
 	}
@@ -48,29 +53,29 @@ public class Board {
 	
 	private ArrayList<Piece> setUpWhiteElitePieces() {
 		return new ArrayList<Piece>(Arrays.asList(
-				Piece.createWhiteRook(), Piece.createWhiteKnight(),
-				Piece.createWhiteBishop(), Queen.createWhiteQueen(), King.createWhiteKing(),
-				Piece.createWhiteBishop(), Piece.createWhiteKnight(), Piece.createWhiteRook()));
+				Rook.createWhiteRook(), Knight.createWhiteKnight(),
+				Bishop.createWhiteBishop(), Queen.createWhiteQueen(), King.createWhiteKing(),
+				Bishop.createWhiteBishop(), Knight.createWhiteKnight(), Rook.createWhiteRook()));
 	}
 	
 	private void setUpWhitePawns() {
 		List<Piece> whitePawnsRank = getRank(1);
 		for (int file = 0; file < 8; file++) {
-			whitePawnsRank.set(file, Piece.createWhitePawn());
+			whitePawnsRank.set(file, Pawn.createWhitePawn());
 		}
 	}
 	
 	private void setUpBlackPawns() {
 		List<Piece> blackPawnsRank = getRank(6);
 		for (int file = 0; file < 8; file++) {
-			blackPawnsRank.set(file, Piece.createBlackPawn());
+			blackPawnsRank.set(file, Pawn.createBlackPawn());
 		}
 	}
 	
 	private ArrayList<Piece> setUpBlackElitePieces() {
-		return new ArrayList<Piece>(Arrays.asList(Piece.createBlackRook(), Piece.createBlackKnight(),
-				Piece.createBlackBishop(), Queen.createBlackQueen(), King.createBlackKing(),
-				Piece.createBlackBishop(), Piece.createBlackKnight(), Piece.createBlackRook()));
+		return new ArrayList<Piece>(Arrays.asList(Rook.createBlackRook(), Knight.createBlackKnight(),
+				Bishop.createBlackBishop(), Queen.createBlackQueen(), King.createBlackKing(),
+				Bishop.createBlackBishop(), Knight.createBlackKnight(), Rook.createBlackRook()));
 	}
 	
 	public int countPieces() {
@@ -103,18 +108,6 @@ public class Board {
 	
 	public int countBlackPieces() {
 		return countPieces(Piece.Color.BLACK);
-	}
-	
-	public int countPieces(Piece.Type type, Piece.Color color) {
-		int pieces = 0;
-		for (List<Piece> rank : board) {
-			for (Piece piece : rank) {
-				if (piece.getType() == type && piece.getColor() == color) {
-					pieces++;
-				}
-			}
-		}
-		return pieces;
 	}
 	
 	public String printBoard() {
@@ -176,7 +169,7 @@ public class Board {
 				Piece piece = rank.get(file);
 				if (piece.isColor(pieceColor)) {
 					if (piece.isPawn() && isThereOtherPawnInSameFile(file, pieceColor)) {
-						score += piece.getHalfPawnScore();
+						score += piece.getHalfScore();
 						continue;
 					}
 					score += piece.getScore();

@@ -60,7 +60,7 @@ public abstract class Piece implements Comparable<Piece> {
 		return score;
 	}
 	
-	protected double getHalfScore() {
+	public double getHalfScore() {
 		return getScore() / 2;
 	}
 	
