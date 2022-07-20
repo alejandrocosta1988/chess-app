@@ -15,7 +15,7 @@ class NoPieceTest {
 	@Disabled
 	@BeforeEach
 	void createBlankPiece() {
-		blank = NoPiece.createNoPiece();
+		blank = NoPiece.noPiece();
 	}
 	
 	@Disabled

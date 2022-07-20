@@ -28,6 +28,11 @@ class QueenTest extends PieceTest {
 		return Queen.createWhiteQueen();
 	}
 	
+	@Override
+	Piece noPiece() {
+		return NoPiece.noPiece();
+	}
+	
 	@Test
 	void testABlackQueenShouldBeRepresentedWithAnUpperCaseQBetweenSpaces() {
 		assertEquals(" Q ", blackQueen.getRepresentation());
@@ -42,6 +47,8 @@ class QueenTest extends PieceTest {
 	void testAQueenScoresNine() {
 		assertEquals(9d, whiteQueen.getScore());
 	}
+
+	
 
 	
 

@@ -198,7 +198,6 @@ public class Board {
 	}
 
 	public void collectWhitePieces() {
-		assignStrengthToPieces();
 		for (List<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.isWhite()) {
@@ -208,23 +207,12 @@ public class Board {
 		}
 	}
 	
-	public void assignStrengthToPieces() {
-		for (List<Piece> rank : board) {
-			for (Piece piece : rank) {
-				if (piece.isNotBlank()) {
-					piece.setStrength();
-				}
-			}
-		}
-	}
-
 	public List<Piece> getWhitePieces() {
 		Collections.sort(whitePieces);
 		return whitePieces;
 	}
 
 	public void collectBlackPieces() {
-		assignStrengthToPieces();
 		for (List<Piece> rank : board) {
 			for (Piece piece : rank) {
 				if (piece.isBlack()) {
