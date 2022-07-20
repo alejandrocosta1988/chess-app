@@ -2,11 +2,18 @@ package chess.pieces;
 
 public class Queen extends Piece {
 	
-	private double score = 9.0;
-	private char printableRepresentation = 'q';
-	
 	private Queen(Piece.Color color) {
 		super(color);
+		setScore(9.0);
+		setPrintableRepresentation('q');
+	}
+	
+	private void setScore(double score) {
+		this.score = score;
+	}
+	
+	private void setPrintableRepresentation(char representation) {
+		printableRepresentation = representation;
 	}
 	
 	public static Piece createBlackQueen() {
@@ -17,22 +24,4 @@ public class Queen extends Piece {
 		return new Queen(Piece.Color.WHITE);
 	}
 	
-	public double getScore() {
-		return score;
-	}
-	
-	public String getRepresentation() {
-		if (isBlack()) {
-			return representBlackQueen();
-		}
-		return representWhiteQueen();
-	}
-	
-	private String representBlackQueen() {
-		return " " + Character.toUpperCase(printableRepresentation) + " ";
-	}
-	
-	private String representWhiteQueen() {
-		return " " + printableRepresentation + " ";
-	}
 }
