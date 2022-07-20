@@ -9,29 +9,34 @@ import org.junit.jupiter.api.Test;
 
 import chess.moves.IntLocations;
 
-class KingTest {
+class KingTest extends PieceTest {
 
 	private Piece whiteKing;
 	private Piece blackKing;
 	
 	@BeforeEach
 	public void createsWhiteAndBlackKings() {
-		whiteKing = King.createWhiteKing();
-		blackKing = King.createBlackKing();
+		whiteKing = createWhitePiece();
+		blackKing = createBlackPiece();
+	}
+	
+	@Override
+	Piece createBlackPiece() {
+		return King.createBlackKing();
+	}
+
+	@Override
+	Piece createWhitePiece() {
+		return King.createWhiteKing();
+	}
+
+	@Override
+	Piece noPiece() {
+		return NoPiece.noPiece();
 	}
 	
 	@Test
-	void testABlackKingsShouldReturnBlackColor() {
-		assertEquals(Piece.Color.BLACK, blackKing.getColor());
-	}
-	
-	@Test
-	void testAWhiteKingsShouldReturnWhiteColor() {
-		assertEquals(Piece.Color.WHITE, whiteKing.getColor());
-	}
-	
-	@Test
-	void testABlackKingShouldBeRepresentedWithAUpperCaseKBetweenSpaces() {
+	void testABlackKingShouldBeRepresentedWithAnUpperCaseKBetweenSpaces() {
 		assertEquals(" K ", blackKing.getRepresentation());
 	}
 	
@@ -80,7 +85,5 @@ class KingTest {
 		IntLocations locations = new IntLocations("d3", "d4");
 		assertTrue(whiteKing.checkMove(locations));
 	}
-	
-	
 
 }

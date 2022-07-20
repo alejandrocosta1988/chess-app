@@ -4,12 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import chess.board.Board;
 import chess.pieces.King;
 import chess.pieces.Piece;
 
+@Disabled
 public class GameTest {
 
 	private Board kingBoard;
