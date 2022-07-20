@@ -6,8 +6,8 @@ public abstract class Piece implements Comparable<Piece> {
 	
 	public enum Color { WHITE, BLACK };
 	private Color color;
-	private char printableRepresentation;
-	private double score;
+	protected char printableRepresentation;
+	protected double score;
 	
 	protected Piece() {
 		super();

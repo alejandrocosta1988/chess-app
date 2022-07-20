@@ -4,11 +4,18 @@ import chess.moves.IntLocations;
 
 public class King extends Piece {
 
-	private double score = 0;
-	private char printableRepresentation = 'k';
-	
 	private King(Piece.Color color) {
 		super(color);
+		setScore(0.0);
+		setPrintableRepresentation('k');
+	}
+	
+	private void setScore(double score) {
+		this.score = score;
+	}
+	
+	private void setPrintableRepresentation(char representation) {
+		printableRepresentation = representation;
 	}
 	
 	public static Piece createBlackKing() {
@@ -17,25 +24,6 @@ public class King extends Piece {
 	
 	public static Piece createWhiteKing() {
 		return new King(Piece.Color.WHITE);
-	}
-	
-	public double getScore() {
-		return score;
-	}
-	
-	public String getRepresentation() {
-		if (isBlack()) {
-			return representBlackKing();
-		}
-		return representWhiteKing();
-	}
-	
-	private String representBlackKing() {
-		return " " + Character.toUpperCase(printableRepresentation) + " ";
-	}
-	
-	private String representWhiteKing() {
-		return " " + printableRepresentation + " ";
 	}
 	
 	public boolean checkMove(IntLocations locations) {
