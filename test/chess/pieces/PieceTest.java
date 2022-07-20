@@ -32,14 +32,23 @@ public abstract class PieceTest {
 	}
 	
 	@Test
-	public void testEachPieceHasAType() {
-		assertEquals(Piece.Type.PAWN, blackPawn.getType());
-		assertEquals(Piece.Type.ROOK, blackRook.getType());
-		assertEquals(Piece.Type.KNIGHT, blackKnight.getType());
-		assertEquals(Piece.Type.BISHOP, blackBishop.getType());
-		assertTrue(blackQueen.getClass() == Queen.class);
-//		assertEquals(Piece.Type.KING, blackKing.getType());
-		assertEquals(Piece.Type.NO_PIECE, blank.getType());
+	void testGivenABlackPieceIsBlackReturnsTrue() {
+		assertTrue(blackPiece.isBlack());
+	}
+	
+	@Test
+	void testGivenABlackPieceIsWhiteReturnsFalse() {
+		assertFalse(blackPiece.isWhite());
+	}
+	
+	@Test
+	void testGivenAWhitePieceIsWhiteReturnsTrue() {
+		assertTrue(whitePiece.isWhite());
+	}
+	
+	@Test
+	void testGivenAWhitePieceIsBlackReturnsFalse() {
+		assertFalse(whitePiece.isBlack());
 	}
 	
 	@Test

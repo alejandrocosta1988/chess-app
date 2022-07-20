@@ -29,26 +29,6 @@ class QueenTest extends PieceTest {
 	}
 	
 	@Test
-	void testGivenABlackQueenIsBlackReturnsTrue() {
-		assertTrue(blackQueen.isBlack());
-	}
-	
-	@Test
-	void testGivenABlackQueenIsWhiteReturnsFalse() {
-		assertFalse(blackQueen.isWhite());
-	}
-	
-	@Test
-	void testGivenAWhiteQueenIsWhiteReturnsTrue() {
-		assertTrue(whiteQueen.isWhite());
-	}
-	
-	@Test
-	void testGivenAWhiteQueenIsBlackReturnsFalse() {
-		assertFalse(whiteQueen.isBlack());
-	}
-	
-	@Test
 	void testABlackQueenShouldBeRepresentedWithAnUpperCaseQBetweenSpaces() {
 		assertEquals(" Q ", blackQueen.getRepresentation());
 	}
