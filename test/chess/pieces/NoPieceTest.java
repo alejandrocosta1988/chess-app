@@ -12,21 +12,10 @@ class NoPieceTest {
 
 	private Piece blank;
 	
+	@Disabled
 	@BeforeEach
 	void createBlankPiece() {
 		blank = NoPiece.createNoPiece();
-	}
-	
-	@Disabled
-	@Test
-	public void testGivenAnEmptySquareIsBlankReturnsTrue() {
-		assertTrue(blank.isBlank());
-	}
-	
-	@Disabled
-	@Test
-	public void testGivenAnEmptySquareIsNotBlankReturnsFalse() {
-		assertFalse(blank.isNotBlank());
 	}
 	
 	@Disabled
