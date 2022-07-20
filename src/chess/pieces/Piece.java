@@ -9,6 +9,10 @@ public abstract class Piece implements Comparable<Piece> {
 	private char printableRepresentation;
 	private double score;
 	
+	protected Piece() {
+		super();
+	}
+	
 	protected Piece(Color color) {
 		this.color = color;
 	}
