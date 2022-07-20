@@ -59,7 +59,7 @@ class BishopTest {
 	}
 	
 	@Test
-	void testABishopScoresNine() {
+	void testABishopScoresThree() {
 		assertEquals(3d, whiteBishop.getScore());
 	}
 

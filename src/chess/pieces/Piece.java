@@ -60,6 +60,10 @@ public abstract class Piece implements Comparable<Piece> {
 		return score;
 	}
 	
+	protected double getHalfScore() {
+		return getScore() / 2;
+	}
+	
 	protected void setScore(double score) {
 		this.score = score;
 	}

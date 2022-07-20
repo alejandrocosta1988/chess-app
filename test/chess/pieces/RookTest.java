@@ -59,7 +59,7 @@ class RookTest {
 	}
 	
 	@Test
-	void testARookScoresNine() {
+	void testARookScoresFive() {
 		assertEquals(5d, whiteRook.getScore());
 	}
 
