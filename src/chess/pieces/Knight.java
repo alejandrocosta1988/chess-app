@@ -3,6 +3,7 @@ package chess.pieces;
 import java.util.List;
 
 import chess.board.Board;
+import chess.moves.IntLocations;
 
 public class Knight extends Piece {
 
@@ -22,6 +23,12 @@ public class Knight extends Piece {
 	
 	public List<String> getPossibleMoves(String location, Board board){
 		return null;
+	}
+
+	@Override
+	protected boolean checkMove(IntLocations locations) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

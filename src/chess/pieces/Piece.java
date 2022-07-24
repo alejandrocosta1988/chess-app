@@ -79,9 +79,7 @@ public abstract class Piece implements Comparable<Piece> {
 		return this.color == color;
 	}
 	
-	protected boolean checkMove(IntLocations locations) {
-		return false;
-	}
+	public abstract boolean checkMove(IntLocations locations);
 
 	protected abstract List<String> getPossibleMoves(String location, Board board);
 
