@@ -1,5 +1,8 @@
 package chess.pieces;
 
+import java.util.List;
+
+import chess.board.Board;
 import chess.moves.IntLocations;
 
 public abstract class Piece implements Comparable<Piece> {
@@ -76,9 +79,11 @@ public abstract class Piece implements Comparable<Piece> {
 		return this.color == color;
 	}
 	
-	public boolean checkMove(IntLocations locations) {
+	protected boolean checkMove(IntLocations locations) {
 		return false;
 	}
+
+	protected abstract List<String> getPossibleMoves(String location, Board board);
 
 	@Override
 	public int compareTo(Piece that) {

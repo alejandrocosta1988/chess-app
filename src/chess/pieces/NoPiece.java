@@ -1,5 +1,9 @@
 package chess.pieces;
 
+import java.util.List;
+
+import chess.board.Board;
+
 public class NoPiece extends Piece {
 
 	private NoPiece() {
@@ -15,6 +19,10 @@ public class NoPiece extends Piece {
 	@Override
 	public String getRepresentation() {
 		return " " + printableRepresentation + " ";
+	}
+	
+	protected List<String> getPossibleMoves(String location, Board board){
+		return null;
 	}
 	
 }

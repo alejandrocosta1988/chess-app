@@ -1,5 +1,9 @@
 package chess.pieces;
 
+import java.util.List;
+
+import chess.board.Board;
+
 public class Bishop extends Piece {
 
 	private Bishop(Piece.Color color) {
@@ -14,6 +18,10 @@ public class Bishop extends Piece {
 
 	public static Piece createWhiteBishop() {
 		return new Bishop(Piece.Color.WHITE);
+	}
+	
+	public List<String> getPossibleMoves(String location, Board board){
+		return null;
 	}
 	
 }

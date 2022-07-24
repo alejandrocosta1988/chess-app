@@ -1,5 +1,8 @@
 package chess.pieces;
 
+import java.util.List;
+
+import chess.board.Board;
 import chess.moves.IntLocations;
 
 public class Queen extends Piece {
@@ -66,6 +69,10 @@ public class Queen extends Piece {
 	
 	private boolean isMoveForwards(IntLocations locations) {
 		return locations.getDestinationRank() > locations.getOriginRank();
+	}
+	
+	public List<String> getPossibleMoves(String location, Board board){
+		return null;
 	}
 	
 }

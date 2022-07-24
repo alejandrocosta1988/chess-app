@@ -1,5 +1,8 @@
 package chess.pieces;
 
+import java.util.List;
+
+import chess.board.Board;
 import chess.moves.IntLocations;
 
 public class King extends Piece {
@@ -33,6 +36,10 @@ public class King extends Piece {
 	private boolean checkRanksInMove(IntLocations locations) {
 		return locations.getDestinationRank() > locations.getOriginRank() + 1 || 
 				locations.getDestinationRank() < locations.getOriginRank() - 1;
+	}
+	
+	public List<String> getPossibleMoves(String location, Board board){
+		return null;
 	}
 	
 }

@@ -1,5 +1,9 @@
 package chess.pieces;
 
+import java.util.List;
+
+import chess.board.Board;
+
 public class Rook extends Piece {
 
 	private Rook(Piece.Color color) {
@@ -14,6 +18,10 @@ public class Rook extends Piece {
 
 	public static Piece createWhiteRook() {
 		return new Rook(Piece.Color.WHITE);
+	}
+	
+	public List<String> getPossibleMoves(String location, Board board){
+		return null;
 	}
 
 }

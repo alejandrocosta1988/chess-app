@@ -1,5 +1,9 @@
 package chess.pieces;
 
+import java.util.List;
+
+import chess.board.Board;
+
 public class Pawn extends Piece {
 
 	public Pawn(Piece.Color color) {
@@ -14,6 +18,10 @@ public class Pawn extends Piece {
 
 	public static Piece createWhitePawn() {
 		return new Pawn(Piece.Color.WHITE);
+	}
+	
+	public List<String> getPossibleMoves(String location, Board board){
+		return null;
 	}
 	
 }

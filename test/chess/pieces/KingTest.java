@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import chess.board.Board;
 import chess.moves.IntLocations;
 
 class KingTest extends PieceTest {
@@ -84,6 +85,13 @@ class KingTest extends PieceTest {
 	void testWhenAKingTriesToMoveOneRankFromOriginThenCheckMoveReturnsTrue() {
 		IntLocations locations = new IntLocations("d3", "d4");
 		assertTrue(whiteKing.checkMove(locations));
+	}
+	
+	@Test
+	void testGivenAKingGetPossibleMovesReturnsAllSquaresThatCouldBeOccupiedByTheKing() {
+		Board board = new Board();
+		board.placePieceAt("d3", blackKing);
+		assertContains(blackKing.getPossibleMoves("d3", board));
 	}
 
 }
