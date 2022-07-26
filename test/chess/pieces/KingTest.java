@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -91,7 +95,9 @@ class KingTest extends PieceTest {
 	void testGivenAKingGetPossibleMovesReturnsAllSquaresThatCouldBeOccupiedByTheKing() {
 		Board board = new Board();
 		board.placePieceAt("d3", blackKing);
-		assertContains(blackKing.getPossibleMoves("d3", board));
+		List<String> expected = new ArrayList<>(Arrays.asList("e3"));
+		List<String> actual = blackKing.getPossibleMoves("d3", board);
+		assertTrue(expected.containsAll(actual) && actual.containsAll(expected));
 	}
 
 }

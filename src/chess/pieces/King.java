@@ -1,9 +1,11 @@
 package chess.pieces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import chess.board.Board;
 import chess.moves.IntLocations;
+import chess.moves.Location;
 
 public class King extends Piece {
 
@@ -39,7 +41,14 @@ public class King extends Piece {
 	}
 	
 	public List<String> getPossibleMoves(String location, Board board){
-		return null;
+		List<String> possibleMoves = new ArrayList<>();
+		Location currentLocation = new Location(location);
+		possibleMoves.add(predictMoveToRight(currentLocation));
+		return possibleMoves;
+	}
+	
+	private String predictMoveToRight(Location location) {
+		return location.predictMoveToRight();
 	}
 	
 }
