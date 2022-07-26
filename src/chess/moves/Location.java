@@ -21,11 +21,53 @@ public class Location {
 	}
 	
 	public String predictMoveToRight() {
-		int predictedFile = file + 1;
+		int predictedFile = addPredictedSquare(file);
 		int predictedRank = rank;
-		StringBuilder prediction = new StringBuilder();
-		prediction.append(LocationUtil.convertIntToFile(predictedFile));
-		prediction.append(LocationUtil.convertIntToRank(predictedRank));
-		return prediction.toString();
+		return translateSquareToString(predictedFile, predictedRank);
+	}
+	
+	public String predictMoveToLeft() {
+		int predictedFile = subtractPredictedSquare(file);
+		int predictedRank = rank;
+		return translateSquareToString(predictedFile, predictedRank);
+	}
+	
+	public String predictUpwardsMove() {
+		int predictedFile = file;
+		int predictedRank = addPredictedSquare(rank);
+		return translateSquareToString(predictedFile, predictedRank);
+	}
+	
+	public String predictBackwardsMove() {
+		int predictedFile = file;
+		int predictedRank = subtractPredictedSquare(rank);
+		return translateSquareToString(predictedFile, predictedRank);
+	}
+	
+	public String predictBackwardsMoveToTheLeft() {
+		int predictedFile = subtractPredictedSquare(file);
+		int predictedRank = subtractPredictedSquare(rank);
+		return translateSquareToString(predictedFile, predictedRank);
+	}
+	
+	public String predictUpwardsMoveToTheLeft() {
+		int predictedFile = subtractPredictedSquare(file);
+		int predictedRank = addPredictedSquare(rank);
+		return translateSquareToString(predictedFile, predictedRank);
+	}
+	
+	private int addPredictedSquare(int square) {
+		return square + 1;
+	}
+	
+	private int subtractPredictedSquare(int square) {
+		return square - 1;
+	}
+	
+	private String translateSquareToString(int file, int rank) {
+		StringBuilder square = new StringBuilder();
+		square.append(LocationUtil.convertIntToFile(file));
+		square.append(LocationUtil.convertIntToRank(rank));
+		return square.toString();
 	}
 }
