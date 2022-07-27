@@ -16,13 +16,9 @@ import chess.pieces.Queen;
 import chess.pieces.Rook;
 import chess.util.StringUtil;
 
-/**
- * Represents a chess board.
- * @author Alejandro Costa
- */
 public class Board {
 	
-	private List<List<Piece>> board = new ArrayList<>(8);
+	private Piece[][] board = new Piece[8][8];
 	private List<Piece> whitePieces = new ArrayList<>();
 	private List<Piece> blackPieces = new ArrayList<>();
 	
@@ -31,60 +27,50 @@ public class Board {
 	}
 	
 	private void initialize() {
-		for (int rank = 0; rank < 8; rank++) {
-			board.add(generateEmptyRank());
-		}
+		for (int rank = 0; rank < 8; rank++)
+			generateEmptyRank(rank);
 	}
 	
-	private ArrayList<Piece> generateEmptyRank() {
-		ArrayList<Piece> emptyRank = new ArrayList<>(8);
-		for (int file = 0; file < 8; file++) {
-			emptyRank.add(NoPiece.noPiece());
-		}
-		return emptyRank;
+	private void generateEmptyRank(int rank) {
+		for (int file = 0; file < 8; file++)
+			board[rank][file] = NoPiece.noPiece();
 	}
 
 	public void setUp() {
-		board.set(0, setUpWhiteElitePieces());
+		setUpWhiteElitePieces();
 		setUpWhitePawns();
 		setUpBlackPawns();
-		board.set(7, setUpBlackElitePieces());
+		setUpBlackElitePieces();
 	}
 	
-	private ArrayList<Piece> setUpWhiteElitePieces() {
-		return new ArrayList<Piece>(Arrays.asList(
-				Rook.createWhiteRook(), Knight.createWhiteKnight(),
-				Bishop.createWhiteBishop(), Queen.createWhiteQueen(), King.createWhiteKing(),
-				Bishop.createWhiteBishop(), Knight.createWhiteKnight(), Rook.createWhiteRook()));
+	private void setUpWhiteElitePieces() {
+		Piece[] whiteElitePieces = { Rook.createWhiteRook(), Knight.createWhiteKnight(), Bishop.createWhiteBishop(), Queen.createWhiteQueen(), King.createWhiteKing(), Bishop.createWhiteBishop(), Knight.createWhiteKnight(), Rook.createWhiteRook() };
+		board[0] = whiteElitePieces;
 	}
 	
 	private void setUpWhitePawns() {
-		List<Piece> whitePawnsRank = getRank(1);
-		for (int file = 0; file < 8; file++) {
-			whitePawnsRank.set(file, Pawn.createWhitePawn());
-		}
+		for (int file = 0; file < 8; file++)
+			board[1][file] = Pawn.createWhitePawn();
 	}
 	
 	private void setUpBlackPawns() {
-		List<Piece> blackPawnsRank = getRank(6);
-		for (int file = 0; file < 8; file++) {
-			blackPawnsRank.set(file, Pawn.createBlackPawn());
-		}
+		for (int file = 0; file < 8; file++)
+			board[6][file] = Pawn.createBlackPawn();
 	}
 	
-	private ArrayList<Piece> setUpBlackElitePieces() {
-		return new ArrayList<Piece>(Arrays.asList(Rook.createBlackRook(), Knight.createBlackKnight(),
+	private void setUpBlackElitePieces() {
+		Piece[] blackElitePieces = { Rook.createBlackRook(), Knight.createBlackKnight(),
 				Bishop.createBlackBishop(), Queen.createBlackQueen(), King.createBlackKing(),
-				Bishop.createBlackBishop(), Knight.createBlackKnight(), Rook.createBlackRook()));
+				Bishop.createBlackBishop(), Knight.createBlackKnight(), Rook.createBlackRook() }; 
+		board[7] = blackElitePieces;
 	}
 	
 	public int countPieces() {
 		int pieces = 0;
-		for (List<Piece> rank : board) {
-			for (Piece piece : rank) {
-				if (piece.isNotBlank()) {
+		for (int rank = 0; rank < 8; rank++) {
+			for (int file = 0; file < 8; file++) {
+				if (board[rank][file].isNotBlank())
 					pieces++;
-				}
 			}
 		}
 		return pieces;
@@ -96,11 +82,10 @@ public class Board {
 	
 	private int countPieces(Piece.Color color) {
 		int pieces = 0;
-		for (List<Piece> rank : board) {
-			for (Piece piece : rank) {
-				if (piece.getColor() == color) {
+		for (int rank = 0; rank < 8; rank++) {
+			for (int file = 0; file < 8; file++) {
+				if (board[rank][file].getColor() == color)
 					pieces++;
-				}
 			}
 		}
 		return pieces;
@@ -112,15 +97,15 @@ public class Board {
 	
 	public String printBoard() {
 		StringBuilder buffer = new StringBuilder();
-		for (int i = board.size() - 1; i > 0; i--) {
-			buffer.append(printRank(board.get(i)));
+		for (int i = board.length - 1; i > 0; i--) {
+			buffer.append(printRank(board[i]));
 			buffer.append(StringUtil.addNewLine());
 		}
-		buffer.append(printRank(board.get(0)));
+		buffer.append(printRank(board[0]));
 		return buffer.toString();
 	}
 
-	public String printRank(List<Piece> rank) {
+	public String printRank(Piece[] rank) {
 		StringBuilder buffer = new StringBuilder();
 		for (Piece piece : rank) {
 			buffer.append(piece.getRepresentation());
@@ -138,12 +123,12 @@ public class Board {
 		return Character.getNumericValue(location.charAt(1)) - correctionToConvertToIndex;
 	}
 	
-	private List<Piece> getRank(int rank) {
-		return board.get(rank);
+	private Piece[] getRank(int rank) {
+		return board[rank];
 	}
 	
-	private Piece getPieceInRank(List<Piece> rank, Character fileCharacter) {
-		return rank.get(fileCharacterToFileInt(fileCharacter));
+	private Piece getPieceInRank(Piece[] rank, Character fileCharacter) {
+		return rank[fileCharacterToFileInt(fileCharacter)];
 	}
 	
 	private int fileCharacterToFileInt(Character fileCharacter) {
@@ -159,14 +144,14 @@ public class Board {
 	public void placePieceAt(String location, Piece piece) {
 		int rank = isolateRankNumberFromStringLocation(location);
 		int filePosition = fileCharacterToFileInt(location.charAt(0));
-		getRank(rank).set(filePosition, piece);
+		getRank(rank)[filePosition] = piece;
 	}
 
 	public double evaluateStrength(Color pieceColor) {
 		double score = 0d;
-		for (List<Piece> rank : board) {
+		for (int rank = 0; rank < 8; rank++) {
 			for (int file = 0; file < 8; file++) {
-				Piece piece = rank.get(file);
+				Piece piece = board[rank][file];
 				if (piece.isColor(pieceColor)) {
 					if (piece.isPawn() && isThereOtherPawnInSameFile(file, pieceColor)) {
 						score += piece.getHalfScore();
@@ -180,22 +165,21 @@ public class Board {
 	}
 	
 	private boolean isThereOtherPawnInSameFile(int file, Piece.Color pieceColor) {
-		List<Piece> pawnsInFile = new ArrayList<>();
-		for (List<Piece> rank : board) {
-			Piece piece = rank.get(file);
-			if (piece.isColor(pieceColor) && piece.isPawn()) {
-				pawnsInFile.add(piece);
-			}
+		int count = 0;
+		for (int rank = 0; rank < 8; rank++) {
+			Piece piece = board[rank][file];
+			if (piece.isColor(pieceColor) && piece.isPawn())
+				count++;
 		}
-		return pawnsInFile.size() > 1;
+		return count > 1;
 	}
 
 	public void collectWhitePieces() {
-		for (List<Piece> rank : board) {
-			for (Piece piece : rank) {
-				if (piece.isWhite()) {
+		for (int rank = 0; rank < 8; rank++) {
+			for (int file = 0; file < 8; file++) {
+				Piece piece = board[rank][file];
+				if (piece.isWhite())
 					whitePieces.add(piece);
-				}
 			}
 		}
 	}
@@ -206,11 +190,11 @@ public class Board {
 	}
 
 	public void collectBlackPieces() {
-		for (List<Piece> rank : board) {
-			for (Piece piece : rank) {
-				if (piece.isBlack()) {
+		for (int rank = 0; rank < 8; rank++) {
+			for (int file = 0; file < 8; file++) {
+				Piece piece = board[rank][file];
+				if (piece.isBlack())
 					blackPieces.add(piece);
-				}
 			}
 		}
 	}
