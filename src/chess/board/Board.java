@@ -3,6 +3,7 @@ package chess.board;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import chess.pieces.Bishop;
@@ -16,7 +17,7 @@ import chess.pieces.Queen;
 import chess.pieces.Rook;
 import chess.util.StringUtil;
 
-public class Board {
+public class Board implements Iterable<Piece> {
 	
 	private Piece[][] board = new Piece[8][8];
 	private List<Piece> whitePieces = new ArrayList<>();
@@ -66,14 +67,9 @@ public class Board {
 	}
 	
 	public int countPieces() {
-		int pieces = 0;
-		for (int rank = 0; rank < 8; rank++) {
-			for (int file = 0; file < 8; file++) {
-				if (board[rank][file].isNotBlank())
-					pieces++;
-			}
-		}
-		return pieces;
+		int count = 0;
+		for (Piece piece : this) count++;
+		return count;
 	}
 	
 	public int countWhitePieces() {
@@ -175,12 +171,9 @@ public class Board {
 	}
 
 	public void collectWhitePieces() {
-		for (int rank = 0; rank < 8; rank++) {
-			for (int file = 0; file < 8; file++) {
-				Piece piece = board[rank][file];
-				if (piece.isWhite())
-					whitePieces.add(piece);
-			}
+		for (Piece piece : this) {
+			if (piece.isWhite())
+				whitePieces.add(piece);
 		}
 	}
 	
@@ -190,12 +183,9 @@ public class Board {
 	}
 
 	public void collectBlackPieces() {
-		for (int rank = 0; rank < 8; rank++) {
-			for (int file = 0; file < 8; file++) {
-				Piece piece = board[rank][file];
-				if (piece.isBlack())
-					blackPieces.add(piece);
-			}
+		for (Piece piece : this) {
+			if (piece.isBlack())
+				blackPieces.add(piece);
 		}
 	}
 
@@ -209,6 +199,19 @@ public class Board {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Iterator<Piece> iterator() {
+		List<Piece> pieces = new ArrayList<>();
+		for (int rank = 0; rank < 8; rank++) {
+			for (int file = 0; file < 8; file++) {
+				Piece piece = board[rank][file];
+				if (piece.isNotBlank())
+					pieces.add(piece);
+			}
+		}
+		return pieces.iterator();
 	}
 
 }
