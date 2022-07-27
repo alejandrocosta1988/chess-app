@@ -26,7 +26,7 @@ public class Knight extends Piece {
 	}
 
 	@Override
-	protected boolean checkMove(IntLocations locations) {
+	public boolean checkMove(IntLocations locations) {
 		// TODO Auto-generated method stub
 		return false;
 	}
