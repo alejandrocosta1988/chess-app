@@ -95,7 +95,7 @@ class KingTest extends PieceTest {
 	void testGivenAKingGetPossibleMovesReturnsAllSquaresThatCouldBeOccupiedByTheKing() {
 		Board board = new Board();
 		board.placePieceAt("d3", blackKing);
-		List<String> expected = new ArrayList<>(Arrays.asList("c3", "c2", "c4", "e3", "d4", "d2"));
+		List<String> expected = new ArrayList<>(Arrays.asList("c3", "c2", "c4", "e3", "e2", "e4", "d4", "d2"));
 		List<String> actual = blackKing.getPossibleMoves("d3", board);
 		assertTrue(expected.containsAll(actual) && actual.containsAll(expected));
 	}

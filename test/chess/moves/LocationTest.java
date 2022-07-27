@@ -49,5 +49,15 @@ class LocationTest {
 	void testPredictsTheStringLocationAfterUpwardsMoveToTheLeft() {
 		assertEquals("c4", location.predictUpwardsMoveToTheLeft());
 	}
+	
+	@Test
+	void testPredictsTheStringLocationAfterUpwardsMoveToTheRight() {
+		assertEquals("e4", location.predictUpwardsMoveToTheRight());
+	}
+	
+	@Test
+	void testPredictsTheStringLocationAfterBackwardsMoveToTheRight() {
+		assertEquals("e2", location.predictBackwardsMoveToTheRight());
+	}
 
 }

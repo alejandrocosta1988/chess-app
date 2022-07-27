@@ -70,4 +70,17 @@ public class Location {
 		square.append(LocationUtil.convertIntToRank(rank));
 		return square.toString();
 	}
+
+	public String predictUpwardsMoveToTheRight() {
+		int predictedFile = addPredictedSquare(file);
+		int predictedRank = addPredictedSquare(rank);
+		return translateSquareToString(predictedFile, predictedRank);
+	}
+
+	public String predictBackwardsMoveToTheRight() {
+		int predictedFile = addPredictedSquare(file);
+		int predictedRank = subtractPredictedSquare(rank);
+		return translateSquareToString(predictedFile, predictedRank);	
+	}
+	
 }

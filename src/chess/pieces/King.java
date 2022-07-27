@@ -49,6 +49,8 @@ public class King extends Piece {
 		possibleMoves.add(predictBackwardsMove(currentLocation));
 		possibleMoves.add(predictBackwardsMoveToTheLeft(currentLocation));
 		possibleMoves.add(predictUpwardsMoveToTheLeft(currentLocation));
+		possibleMoves.add(predictUpwardsMoveToTheRight(currentLocation));
+		possibleMoves.add(predictBackwardsMoveToTheRight(currentLocation));
 		return possibleMoves;
 	}
 	
@@ -74,6 +76,14 @@ public class King extends Piece {
 	
 	private String predictUpwardsMoveToTheLeft(Location location) {
 		return location.predictUpwardsMoveToTheLeft();
+	}
+	
+	private String predictUpwardsMoveToTheRight(Location location) {
+		return location.predictUpwardsMoveToTheRight();
+	}
+	
+	private String predictBackwardsMoveToTheRight(Location location) {
+		return location.predictBackwardsMoveToTheRight();
 	}
 	
 }
