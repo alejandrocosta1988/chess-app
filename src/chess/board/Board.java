@@ -68,7 +68,11 @@ public class Board implements Iterable<Piece> {
 	
 	public int countPieces() {
 		int count = 0;
-		for (Piece piece : this) count++;
+		Iterator<Piece> it = this.iterator();
+		while (it.hasNext()) {
+			count++;
+			it.next();
+		}
 		return count;
 	}
 	
